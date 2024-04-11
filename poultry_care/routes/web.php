@@ -40,6 +40,7 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
 Route::get('/logout/admin',[AdminController::class,'Logout'])->name('admin.logout');
+Route::get('/customer/orders',[AdminController::class,'Orders'])->name('customer.orders');
 });
 
 
