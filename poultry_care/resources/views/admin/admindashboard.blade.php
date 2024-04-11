@@ -178,7 +178,7 @@
    
     </div>
     <div>
-     <a href="{{route('logout')}}" class="sidebar-link"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+     <a href="{{route('admin.logout')}}" class="sidebar-link"><i class="fa fa-power-off" aria-hidden="true"></i></a>
     </div>
             </nav>
 

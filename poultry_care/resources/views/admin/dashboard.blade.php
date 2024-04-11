@@ -27,7 +27,7 @@
 <div class="col-lg-3 col-md-3 col-sm-6">
 <div class="small-box bg-green">
 <div class="inner text-center">
-    <h3 id="regmembers">0</h3>
+    <h3 id="regmembers">{{ number_format($total,2) }}</h3>
     <p>Total Orders</p>
 </div>
 <div class="icon text-center">
