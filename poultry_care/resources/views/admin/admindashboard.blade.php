@@ -35,148 +35,148 @@
     <div class="wrapper">
     <!-- Sidebar -->
     <aside id="sidebar" style="background: #03a84e">
-        <div class="h-100">
-            <div class="sidebar-logo">
-                <a href="#">Poultry Care</a>
-                <i class="fa-solid fa-kiwi-bird"></i>
-            </div>
-            <!-- Sidebar Navigation -->
-            <ul class="sidebar-nav">
-                <li class="sidebar-header">
-                    Tools & Components
-                </li>
-            
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{route('admin.dashboard')}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#pages"
-                        aria-expanded="false" aria-controls="pages">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                    Dashboard
-                    </a>
-                    {{-- <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link">All subjects</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Add Subject</a>
-                        </li>
-                        
-                    </ul> --}}
-                </li>
-                
-                <li class="sidebar-item">
-                    <a href="" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#multi"
-                        aria-expanded="false" aria-controls="multi">
-                        <i class="fa fa-money" aria-hidden="true"></i>
-                        Sales
-                    </a>
-                    {{-- <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                More
-                            </a>
-                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                <li class="sidebar-item">
-                                    <a href="" class="sidebar-link">All Students</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="" class="sidebar-link">Add student</a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                    </ul> --}}
-                </li>
+    <div class="h-100">
+    <div class="sidebar-logo">
+    <a href="#">Poultry Care</a>
+    <i class="fa-solid fa-kiwi-bird"></i>
+    </div>
+    <!-- Sidebar Navigation -->
+    <ul class="sidebar-nav">
+    <li class="sidebar-header">
+    Tools & Components
+    </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Orders
-                    </a>
-                    {{-- <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">update Profile</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{route('logout')}}" class="sidebar-link" title="logout">Logout</a>
-                        </li>
-                    </ul> --}}
-                </li>
+    </li>
+    <li class="sidebar-item">
+    <a href="{{route('admin.dashboard')}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#pages"
+        aria-expanded="false" aria-controls="pages">
+        <i class="fa fa-home" aria-hidden="true"></i>
+    Dashboard
+    </a>
+    {{-- <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+        <li class="sidebar-item">
+            <a href="" class="sidebar-link">All subjects</a>
+        </li>
+        <li class="sidebar-item">
+            <a href="" class="sidebar-link">Add Subject</a>
+        </li>
+        
+    </ul> --}}
+    </li>
 
+    <li class="sidebar-item">
+    <a href="" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#multi"
+        aria-expanded="false" aria-controls="multi">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        Sales
+    </a>
+    {{-- <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                More
+            </a>
+            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fas fa-wallet" aria-hidden="true"></i>
-                    Direct Sales
-                    </a>
-                    
-                </li>
-                
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-asterisk" aria-hidden="true"></i>
-                        Batch Flock records
-                    </a>
-                    
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-asterisk" aria-hidden="true"></i>
-                        Hatchery records
-                    </a>
-                    
+                    <a href="" class="sidebar-link">All Students</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    Vaccination records
-                    </a>
-                    
-                </li>
-
-                <li class="sidebar-header">
-                    Farm settings
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        Expense Management
-                    </a>
-                    
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                    Stock Management
-                    </a>
-                    
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
-                        aria-expanded="false" aria-controls="auth">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        Income Management
-                    </a>
-                    
+                    <a href="" class="sidebar-link">Add student</a>
                 </li>
             </ul>
-        </div>
+        </li>
+        
+    </ul> --}}
+    </li>
+
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        Orders
+    </a>
+    {{-- <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">update Profile</a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{route('logout')}}" class="sidebar-link" title="logout">Logout</a>
+        </li>
+    </ul> --}}
+    </li>
+
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fas fa-wallet" aria-hidden="true"></i>
+    Direct Sales
+    </a>
+
+    </li>
+
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+        Batch Flock records
+    </a>
+
+    </li>
+
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+        Hatchery records
+    </a>
+
+    </li>
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+    Vaccination records
+    </a>
+
+    </li>
+
+    <li class="sidebar-header">
+    Farm settings
+    </li>
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Expense Management
+    </a>
+
+    </li>
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-list" aria-hidden="true"></i>
+    Stock Management
+    </a>
+
+    </li>
+    <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+        aria-expanded="false" aria-controls="auth">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Income Management
+    </a>
+
+    </li>
+    </ul>
+    </div>
     </aside>
     <!-- Main Component -->
     <div class="main">
-        <nav class="navbar navbar-expand px-3 border-bottom">
-            <!-- Button for sidebar toggle -->
-            <button class="btn" type="button" data-bs-theme="dark">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-expand px-3 border-bottom">
+    <!-- Button for sidebar toggle -->
+    <button class="btn" type="button" data-bs-theme="dark">
+    <span class="navbar-toggler-icon"></span>
+    </button>
     <div  class="sidebar-link" style="margin-left:85%;">
     <div>
 
@@ -188,19 +188,19 @@
     <div>
     <a href="{{route('admin.logout')}}" class="sidebar-link"><i class="fa fa-power-off" aria-hidden="true"></i></a>
     </div>
-        </nav>
+    </nav>
 
 
-        <main class="content px-3 py-2">
-            <div class="container-fluid">
-                <div class="mb-3">
+    <main class="content px-3 py-2">
+    <div class="container-fluid">
+    <div class="mb-3">
 
-                    @yield('content')
+    @yield('content')
 
-                
-                </div>
-            </div>
-        </main>
+
+    </div>
+    </div>
+    </main>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -249,80 +249,18 @@
     buttons: true,
     dangerMode: true,
     customClass: {
-        popup: 'swal-small', 
+    popup: 'swal-small', 
     },
     })
 
     .then((willCancel) => {
     if (willCancel) {
-        window.location.href = urlToRedirect;
+    window.location.href = urlToRedirect;
     }
     });
     }
 
     </script>
-    <script>
-    function addAnswer() {
-        const answersContainer = document.getElementById('answers-container');
-        const answerInput = document.createElement('div');
-        answerInput.classList.add('answer-input');
-        answerInput.innerHTML = `
-            <input type="text" name="answers[]" placeholder="Enter answer" required>
-            <label class="text-white mt-2">
-                <input type="radio" name="is_correct" class="is_correct">
-                Correct Answer
-            </label>
-        `;
-        answersContainer.appendChild(answerInput);
-    }
-    </script>
-
-    <!-- <script>
-    // $(document).ready(function () {
-    //     $('form').submit(function (event) {
-    //         event.preventDefault();
-
-    //         var checkIsCorrect = false;
-
-    //         for(let i =0 ;i<$('.is_correct').length;i++){
-    //             if($('.is_correct:eq('+i+')').prop('checked') == true)
-    //             {
-    //                 checkIsCorrect =true;
-    //                 $('.is_correct:eq('+i+')').val($('.is_correct:eq('+i+')').next().find('input').val());
-    //             }
-    //         }
-
-    //         if (checkIsCorrect) {
-    //             var formData = $(this).serialize();
-
-    //             $.ajax({
-    //                 url: "",
-    //                 type: "POST",
-    //                 data: formData,
-    //                 success: function (data) {
-    //                     console.log(data);
-    //                     if (data.success) {
-    //                         location.reload();
-    //                     } else {
-    //                         alert(data.message);
-    //                     }
-    //                 },
-    //                 error: function (error) {
-    //                     console.log(error);
-    //                 }
-    //             });
-    //         } else {
-    //             $('.error').text('Please select the correct answer');
-
-    //             setTimeout(function () {
-    //                 $('.error').text('');
-    //             }, 2000);
-    //         }
-    //     });
-    // });
-    </script> -->
-
-
 
 
     </body>

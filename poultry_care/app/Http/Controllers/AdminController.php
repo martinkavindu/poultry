@@ -26,7 +26,7 @@ class AdminController extends Controller
       }
    public function Orders(){
     $orders = DB::select("SELECT * FROM orders");
-    return view('admin.orders',compact('total','orders'));
+    return view('admin.orders',compact('orders'));
 
    }
 }
