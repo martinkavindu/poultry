@@ -7,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <script href="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-    <script href="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
-    <script href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-    <script href = "https://code.jquery.com/jquery-3.7.1.js"></script>
-    <link href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css.">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap.min.css">>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -175,7 +174,7 @@
     <nav class="navbar navbar-expand px-3 border-bottom">
     <!-- Button for sidebar toggle -->
     <button class="btn" type="button" data-bs-theme="dark">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon" style="color:#03a84e"></span>
     </button>
     <div  class="sidebar-link" style="margin-left:85%;">
     <div>
@@ -261,7 +260,31 @@
     }
 
     </script>
-
+     <script>
+        $(document).ready(function(){
+            $('.updateorder').click(function(){
+                var id = $(this).attr('data-id');
+                $('#orderid').val(id);
+                $.ajax({
+                    url: "{{ route('orderdetails') }}",
+                    type: "GET",
+                    data: { id: id },
+                    success: function(response){
+                       var data = response.data;
+                     $('#customer_name').val(data.customer_name);
+                     $('#customer_email').val(data.customer_);
+                     $('#order_id').val(data.order_id);
+                     $('#customer_number').val(data.customer_id);
+                     $('#customer_phone').val(data.customer_phone);
+                     $('#item_name').val(data.order_item);
+                     $('#quantity').val(data.number_items);
+                     $('#amount').val(data.amount);
+                    }
+                 
+                });
+            });
+        });
+    </script>
 
     </body>
 

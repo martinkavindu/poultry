@@ -11,7 +11,7 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
     <div class="small-box bg-primary">
     <div class="inner text-center">
-    <h3 id="regmembers">30</h3>
+    <h3 id="regmembers">{{number_format($total,2)}}</h3>
     <p>Total Customers</p>
     </div>
     <div class="icon text-center">

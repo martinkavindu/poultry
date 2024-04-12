@@ -41,6 +41,10 @@ Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
 Route::get('/logout/admin',[AdminController::class,'Logout'])->name('admin.logout');
 Route::get('/customer/orders',[AdminController::class,'Orders'])->name('customer.orders');
+Route::get('/delete/orders/{id}',[AdminController::class,'Deleteorder'])->name('delete.order');
+Route::get('/edit/orders', [AdminController::class, 'Editorder'])->name('orderdetails');
+Route::post('/update/orders', [AdminController::class, 'UpdateOrder'])->name('updateorder');
+
 });
 
 

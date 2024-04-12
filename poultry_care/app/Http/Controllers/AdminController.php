@@ -29,4 +29,28 @@ class AdminController extends Controller
     return view('admin.orders',compact('orders'));
 
    }
+   public function Deleteorder($id){
+
+    Orders::findOrFail($id)->delete();
+    return redirect()->back()->with('message','Order deleted successfully');
+   }
+
+   public function Editorder(Request $request){
+    $id = $request->id;
+    $order = Orders::find($id);
+    return response()->json(['success' => true,'data'=>$order]);
+   }
+
+   public function UpdateOrder( Request $request){
+    $oid = $request->id;
+    Orders::findOrFail($oid)->update([
+   'payment_status' =>$request->payment_status,
+   'number_items' =>$request->number_items,
+   'order_status' =>$request->order_status,
+    'amount'     =>$request->amount,
+    ]);
+
+    return redirect()->route('customer.orders')->with('message','Order updated successfully');
+
+   }
 }
