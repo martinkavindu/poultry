@@ -18,7 +18,7 @@
     <i class="fa fa-users"></i>
     </div>
     <div class="small-box-footer">
-    <a href="" class="moreinfo">
+    <a href="{{route('customers')}}" class="moreinfo">
     More info <i class="fa fa-arrow-circle-right"></i>
     </a>
     </div>

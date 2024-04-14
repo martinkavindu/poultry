@@ -53,4 +53,9 @@ class AdminController extends Controller
     return redirect()->route('customer.orders')->with('message','Order updated successfully');
 
    }
+   public function Customers(){
+
+    $customersdata= Orders::all();
+    return view('admin.customers',compact('customersdata'));
+   }
 }
