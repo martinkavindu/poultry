@@ -45,7 +45,7 @@ Route::get('/delete/orders/{id}',[AdminController::class,'Deleteorder'])->name('
 Route::get('/edit/orders', [AdminController::class, 'Editorder'])->name('orderdetails');
 Route::post('/update/orders', [AdminController::class, 'UpdateOrder'])->name('updateorder');
 Route::get('/poultry/customers', [AdminController::class, 'Customers'])->name('customers');
-
+Route::get('/pending/orders', [AdminController::class, 'PendingOrders'])->name('pending.orders');
 });
 
 

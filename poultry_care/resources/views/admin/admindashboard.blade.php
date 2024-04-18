@@ -64,7 +64,7 @@
     </li>
 
     <li class="sidebar-item">
-    <a href="" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#multi"
+    <a href="{{}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#multi"
         aria-expanded="false" aria-controls="multi">
         <i class="fa fa-money" aria-hidden="true"></i>
         Sales
@@ -105,7 +105,7 @@
     </li>
 
     <li class="sidebar-item">
-    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+    <a href="" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
         aria-expanded="false" aria-controls="auth">
         <i class="fas fa-wallet" aria-hidden="true"></i>
     Direct Sales
@@ -181,7 +181,16 @@
 
     </div>
 
-    <h3 style="font-size: 12px"> <i class="fa fa-user" aria-hidden="true"></i> {{Auth::user()->name}}</h3>
+    <h3 style="font-size: 12px position-relative"> <i class="fa fa-user" aria-hidden="true">
+ 
+    
+    </i> {{Auth::user()->name}}
+    <a href="{{route('pending.orders')}}" >
+    <span class="translate-middle badge rounded-pill bg-success">
+    {{$new}}
+      </span> 
+    </a>
+    </h3>
 
     </div>
     <div>

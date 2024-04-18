@@ -40,7 +40,17 @@
     <td>{{ $item->payment_status }}</td>
     <td>{{ $item->order_item }}</td>
     <td>{{ $item->number_items }}</td>
-    <td>{{ $item->order_status }}</td>
+    <td>
+      @if($item->order_status == 'pending')
+          <span class="badge bg-warning">{{ $item->order_status }}</span>
+      @elseif($item->order_status == 'completed')
+          <span class="badge bg-success">{{ $item->order_status }}</span>
+      @elseif($item->order_status == 'processing')
+          <span class="badge bg-secondary">{{ $item->order_status }}</span>
+      @else
+      <span class="badge bg-danger">{{ $item->order_status}}</span>
+      @endif
+  </td>
     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
     <td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
         <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>

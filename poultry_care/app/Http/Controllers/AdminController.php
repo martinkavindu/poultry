@@ -15,7 +15,9 @@ class AdminController extends Controller
     //   $total = $orders->count();
     $orders = DB::select("SELECT * FROM orders");
     $total = count($orders);
-        return view('admin.dashboard',compact('total','orders'));
+    $neworders =DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+    $new =count($neworders);
+    return view('admin.dashboard',compact('total','orders','new','neworders'));
     }
 
     public function Logout (Request $request){
@@ -26,8 +28,9 @@ class AdminController extends Controller
       }
    public function Orders(){
     $orders = DB::select("SELECT * FROM orders");
-    return view('admin.orders',compact('orders'));
-
+    $neworders =DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+    $new =count($neworders);
+    return view('admin.orders',compact('orders','neworders','new'));
    }
    public function Deleteorder($id){
 
@@ -56,6 +59,15 @@ class AdminController extends Controller
    public function Customers(){
 
     $customersdata= Orders::all();
-    return view('admin.customers',compact('customersdata'));
+    $neworders =DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+    $new =count($neworders);
+    return view('admin.customers',compact('customersdata','new'));
+   }
+
+   public function PendingOrders(){
+    $neworders = DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+    $new =count($neworders);
+
+    return view('admin.pending',compact('new','neworders'));
    }
 }
