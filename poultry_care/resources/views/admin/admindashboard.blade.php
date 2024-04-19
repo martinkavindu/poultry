@@ -256,7 +256,7 @@
     icon: 'warning',
     buttons: true,
     dangerMode: true,
-    customClass: {
+    customClassName: {
     popup: 'swal-small', 
     },
     })
@@ -300,12 +300,19 @@
 
             $.ajax({
         
-            url : "{{route(getproduct)}}",
+            url : "{{route('getproduct')}}",
             type: 'Get',
             data:{id:invid},
-            success :function(data){
+            success :function(response){
+               
+ 
+         var data = response.data[0];
+         console.log(data.product_name);
+         $('.product_nam').val(data.product_name);
+         $('.quantity').val(data.Quantity);
+         $('.unit_type').val(data.unit);
+         $('.product_price').val(data.product_price);
 
-                console.log(data);
             }
 
             })

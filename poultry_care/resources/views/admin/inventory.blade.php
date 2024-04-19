@@ -147,28 +147,28 @@ $totalAmount += $item->product_price * $item->Quantity;
       </div>
       
       <!-- Modal body -->
-      <form action="" method="POST">
+      <form action="{{route('update.inventory')}}" method="POST">
           @csrf
       <div class="modal-body">
        <input type="text" id="inventoryid" class="form-control" name="id">
        <div class="form-group">
           <label for="exampleFormControlInput1">Product</label>
-          <input type="text" class="form-control" id="product_name" name="product_name">
+          <input type="text" class="form-control product_nam" id="" name="product_name">
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Product Price</label>
-          <input type="text" class="form-control" id="product_price" name="product_price">
+          <input type="text" class="form-control product_price" id="" name="product_price">
         </div>
 
         <div class="form-group">
           <label for="exampleFormControlInput1">Quantity</label>
-          <input type="text" class="form-control" id="quantity" name="quantity">
+          <input type="text" class="form-control quantity" id="" name="quantity">
         </div>
 
         
         <div class="form-group">
           <label for="exampleFormControlInput1">Unit type</label>
-          <select name="unit" class="form-control">
+          <select name="unit" class="form-control unit_type">
               <option selected disabled>
             Select unit
               </option>

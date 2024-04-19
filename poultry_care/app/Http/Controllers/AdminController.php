@@ -110,5 +110,27 @@ public function Deleteproduct($id){
       return redirect()->route('all.inventory')->with('message','product delete successfully');
   
 }
+public function Getproduct(Request $request){
 
+    $pid = $request->id;
+   $products = DB::table('products')->where('id',$pid)->get();
+
+    return response()->json(['success'=>true,'data'=>$products]);
+}
+
+public function UpdateInventory(Request $request){
+    $pid = $request->id;
+
+    DB::table('products')->where('id',$pid)->update([
+'product_name' =>$request->product_name,
+'Quantity'     =>$request->quantity,
+'product_price' =>$request->product_price,
+'unit'          =>$request->unit,
+'category'     =>$request->category,
+
+
+    ]);
+
+    return redirect()->route('all.inventory')->with('message','product updated successfully');
+}
 }

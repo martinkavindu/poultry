@@ -50,6 +50,8 @@ Route::get('/all/sales', [AdminController::class, 'Allsales'])->name('all.sales'
 Route::get('/all/inventory', [AdminController::class, 'AllInventory'])->name('all.inventory');
 Route::post('/add/inventory',[AdminController::class,'Addinventory'])->name('add.inventory');
 Route::get('/delete/product/{id}', [AdminController::class,'Deleteproduct'])->name('delete.product');
+Route::get('/get/product', [AdminController::class,'Getproduct'])->name('getproduct');
+Route::post('/update/product',[AdminController::class,'UpdateInventory'])->name('update.inventory');
 
 });
 
