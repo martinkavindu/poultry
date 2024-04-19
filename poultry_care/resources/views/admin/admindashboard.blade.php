@@ -292,6 +292,24 @@
                  
                 });
             });
+
+            $('.updateinventory').click(function(){
+
+            var invid = $(this).attr('data_id');
+            $('#inventoryid').val(invid);
+
+            $.ajax({
+        
+            url : "{{route(getproduct)}}",
+            type: 'Get',
+            data:{id:invid},
+            success :function(data){
+
+                console.log(data);
+            }
+
+            })
+            })
         });
     </script>
 

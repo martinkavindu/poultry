@@ -41,7 +41,7 @@ $totalAmount = 0;
 <td>{{$item->category}}</td>
 <td> {{$item->product_price * $item->Quantity}} KES</td>
 <td>{{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y') }}</td>
-<td> <a href="#" class="btn btn-sm btn-primary updatesales" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
+<td> <a href="#" class="btn btn-sm btn-primary updateinventory" data-toggle="modal" data-target="#Updateinventory"  data_id ="{{$item->id}}">Update</a>
     <a  onclick = "confirmation(event)"href="{{route('delete.product',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>
 </td>
 
@@ -133,6 +133,74 @@ $totalAmount += $item->product_price * $item->Quantity;
     </div>
   </div>
 
+
+{{-- update inventory --}}
+
+<div class="modal" id="Updateinventory">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update Inventory</h4>
+        
+      </div>
+      
+      <!-- Modal body -->
+      <form action="" method="POST">
+          @csrf
+      <div class="modal-body">
+       <input type="text" id="inventoryid" class="form-control" name="id">
+       <div class="form-group">
+          <label for="exampleFormControlInput1">Product</label>
+          <input type="text" class="form-control" id="product_name" name="product_name">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Product Price</label>
+          <input type="text" class="form-control" id="product_price" name="product_price">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Quantity</label>
+          <input type="text" class="form-control" id="quantity" name="quantity">
+        </div>
+
+        
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Unit type</label>
+          <select name="unit" class="form-control">
+              <option selected disabled>
+            Select unit
+              </option>
+              <option value="single_unit">Single unit</option>
+              <option value="dozen">Dozen</option>
+              <option value="tray">Tray</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Category</label>
+          <select name="category" class="form-control">
+              <option selected disabled>
+            Select Category
+              </option>
+              <option value="kienyeji">Kienjeji</option>
+              <option value="grade">grade</option>
+              <option value="broiler">Broiler</option>
+              <option value="layer">Layer</option>
+          </select>
+        </div>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">update</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 
