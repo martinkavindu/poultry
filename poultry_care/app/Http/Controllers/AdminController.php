@@ -70,4 +70,45 @@ class AdminController extends Controller
 
     return view('admin.pending',compact('new','neworders'));
    }
+
+   public function Allsales(){
+  $sales = DB::select("SELECT * FROM sales");
+  $neworders = DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+  $new =count($neworders);
+  return view('admin.sales',compact('sales','new'));
+
+   }
+
+   public function AllInventory(){
+
+    $inventories = DB::select("SELECT * FROM products");
+    $neworders = DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
+    $new =count($neworders);
+
+    return view('admin.inventory',compact('inventories','new'));
+
+   }
+   public function Addinventory(Request $request){
+
+    $latestProductId = DB::table('products')->max('product_id');
+    $lastNumber = intval(substr($latestProductId, 2)); 
+    $newProductId = 'PD' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+
+    DB::table('products')->insert([
+        'product_name' => $request->product_name,
+        'product_price' => $request->product_price,
+        'Quantity' => $request->quantity,
+        'unit'    =>$request->unit,
+        'category' =>$request->category,
+        'product_id' => $newProductId
+    ]); return redirect()->route('all.inventory')->with('message','product added successfully');
+
+}
+public function Deleteproduct($id){
+
+      DB::table('products')->where('id', $id)->delete();
+      return redirect()->route('all.inventory')->with('message','product delete successfully');
+  
+}
+
 }
