@@ -39,7 +39,7 @@ $totalAmount = 0;
 <td>{{ $item->amount }}</td>
 <td>{{ $item->payment_status }}</td>
 <td>{{ $item->order_item }}</td>
-<td>{{ $item->number_items }}</td>
+<td>{{ $item->quantity}}</td>
 <td>
     @if($item->order_status == 'pending')
         <span class="badge bg-warning">{{ $item->order_status }}</span>
