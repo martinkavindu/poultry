@@ -1,7 +1,9 @@
     @extends('admin.admindashboard')
 
     @section('content')
-
+  <div class="mb-2"> 
+<button class="btn btn-primary btn-sm addorder" data-toggle="modal" data-target="#addModal">Add direct order</button>
+  </div>
     <div class="panel panel-default">
     <div class="panel-heading">All orders list</div>
     <div class="table-responsive">
@@ -154,7 +156,93 @@
       </div>
 
 
+ {{-- add direct order --}}
+
+ <div class="modal" id="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create direct order</h4>
+        
+      </div>
+      
+      <!-- Modal body -->
+      <form action="{{route('updateorder')}}" method="POST">
+          @csrf
+      <div class="modal-body"> 
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Customer Name</label>
+          <input type="text" class="form-control" id="" name="customer_name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Customer Email</label>
+          <input type="email" class="form-control" id="" name="customer_email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Customer phone</label>
+          <input type="text" class="form-control" id="" name="customer_phone" required >
+        </div>
+    
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Payment status</label>
+       <select class="form-control" name="payment_status">
+          <option selected disabled>Select payment status</option>
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+          <option value="void">void</option>
+       </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Item name</label>
+          <select type="text" class="form-control" id="item_name" name="order_item">
+         <option disabled selected>  Select item</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Quantity</label>
+          <input type="text" class="form-control" id="qty" name="number_items">
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Price per unit</label>
+          <input type="text" class="form-control" id="unitprice" readonly>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Total amount</label>
+          <input type="text" class="form-control" id="cost" name="amount" readonly>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Order status</label>
+       <select class="form-control" name="order_status">
+          <option selected disabled>Select order status</option>
+          <option value="processing">processing</option>
+          <option value="pending">pending </option>
+          <option value="completed">completed</option>
+          <option value="cancelled">cancelled</option>
+       </select>
+        </div>
  
+
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
     
     
     @endsection

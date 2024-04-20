@@ -89,7 +89,7 @@
     </li>
 
     <li class="sidebar-item">
-    <a href="#" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
+    <a href="{{route('customer.orders')}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
         aria-expanded="false" aria-controls="auth">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         Orders
@@ -315,8 +315,31 @@
 
             }
 
-            })
-            })
+            });
+            });
+        // add direct order
+
+        $('.addorder').click(function() {
+    $.ajax({
+        url: "{{ route('allproducts') }}",
+        type: 'GET',
+        success: function(data) {
+            // Clear previous options
+            $('#item_name').empty();
+
+            // Append options for each product
+            data.forEach(function(product) {
+                $('#item_name').append(`<option value="${product.product_price}">${product.product_name}</option>`);
+            });
+
+            // Update product price when a product is selected
+            $('#item_name').change(function() {
+                var selectedPrice = $(this).val();
+                $('#unitprice').val(selectedPrice);
+            });
+        }
+    });
+     });
         });
     </script>
 

@@ -133,4 +133,11 @@ public function UpdateInventory(Request $request){
 
     return redirect()->route('all.inventory')->with('message','product updated successfully');
 }
+
+public function Allproducts(){
+
+  $products = DB::table('products')->get();
+
+    return response()->json(['success'=>true,'data'=>$products]);
+}
 }
