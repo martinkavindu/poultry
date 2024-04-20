@@ -41,7 +41,7 @@
     <td>{{ $item->amount }}</td>
     <td>{{ $item->payment_status }}</td>
     <td>{{ $item->order_item }}</td>
-    <td>{{ $item->number_items }}</td>
+    <td>{{ $item->quantity}}</td>
     <td>
       @if($item->order_status == 'pending')
           <span class="badge bg-warning">{{ $item->order_status }}</span>
@@ -169,7 +169,7 @@
       </div>
       
       <!-- Modal body -->
-      <form action="{{route('updateorder')}}" method="POST">
+      <form action="{{route('addorder')}}" method="POST">
           @csrf
       <div class="modal-body"> 
 
@@ -199,20 +199,20 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Item name</label>
-          <select type="text" class="form-control" id="item_name" name="order_item">
+          <select type="text" class="form-control item_name" id="" name="item">
          <option disabled selected>  Select item</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="exampleFormControlInput1">Quantity</label>
-          <input type="text" class="form-control" id="qty" name="number_items">
+          <input type="text" class="form-control qty" id="" name="quantity">
         </div>
 
 
         <div class="form-group">
           <label for="exampleFormControlInput1">Price per unit</label>
-          <input type="text" class="form-control" id="unitprice" readonly>
+          <input type="text" class="form-control unitprice" id="" readonly>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Total amount</label>

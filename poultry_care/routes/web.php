@@ -53,6 +53,9 @@ Route::get('/delete/product/{id}', [AdminController::class,'Deleteproduct'])->na
 Route::get('/get/product', [AdminController::class,'Getproduct'])->name('getproduct');
 Route::post('/update/product',[AdminController::class,'UpdateInventory'])->name('update.inventory');
 Route::get('/all/products',[AdminController::class,'Allproducts'])->name('allproducts');
+Route::get('/price',[AdminController::class,'Getprice'])->name('getprice');
+Route::post('/add/orders',[AdminController::class,'Addorder'])->name('addorder');
+
 
 });
 

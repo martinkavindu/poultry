@@ -48,7 +48,7 @@ class AdminController extends Controller
     $oid = $request->id;
     Orders::findOrFail($oid)->update([
    'payment_status' =>$request->payment_status,
-   'number_items' =>$request->number_items,
+   'quantity' =>$request->number_items,
    'order_status' =>$request->order_status,
     'amount'     =>$request->amount,
     ]);
@@ -136,8 +136,42 @@ public function UpdateInventory(Request $request){
 
 public function Allproducts(){
 
-  $products = DB::table('products')->get();
+    $products = DB::table('products')->pluck('product_name')->toArray();
 
     return response()->json(['success'=>true,'data'=>$products]);
+}
+
+public function Getprice(Request $request){
+
+$item = $request->item;
+
+$price = DB::table('products')->where('product_name',$item)->pluck('product_price');
+return response()->json(['success'=>true,'data'=>$price]);
+}
+
+public function Addorder(Request $request){
+ 
+    $latestOrderId = DB::table('orders')->max('order_id');
+    $lastNumber = intval(substr($latestOrderId, 2)); 
+    $newOrderId = 'OD' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+
+    $latestCustomerId = DB::table('orders')->max('customer_id');
+    $lastNumber = intval(substr($latestCustomerId, 2)); 
+    $newCustomerId = 'CST' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+    DB::table('orders')->insert([
+'order_id' => $newOrderId,
+'customer_id'=>$newCustomerId,
+'customer_name'=>$request->customer_name,
+'customer_email'=>$request->customer_email,
+'customer_phone' =>$request->customer_phone,
+'amount' => $request->amount,
+'payment_status' =>$request->payment_status,
+'order_item'  =>$request->item,
+'quantity'  =>$request->quantity,
+'order_status'=>$request->order_status,
+
+    ]);
+
+    return redirect()->route('customer.orders')->with('message','Order created successfully');
 }
 }

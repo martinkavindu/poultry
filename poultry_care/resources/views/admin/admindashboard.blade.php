@@ -307,7 +307,7 @@
                
  
          var data = response.data[0];
-         console.log(data.product_name);
+      
          $('.product_nam').val(data.product_name);
          $('.quantity').val(data.Quantity);
          $('.unit_type').val(data.unit);
@@ -318,28 +318,46 @@
             });
             });
         // add direct order
-
-        $('.addorder').click(function() {
+        $('.addorder').click(function(){
     $.ajax({
         url: "{{ route('allproducts') }}",
         type: 'GET',
         success: function(data) {
-            // Clear previous options
             $('#item_name').empty();
-
-            // Append options for each product
-            data.forEach(function(product) {
-                $('#item_name').append(`<option value="${product.product_price}">${product.product_name}</option>`);
-            });
-
-            // Update product price when a product is selected
-            $('#item_name').change(function() {
-                var selectedPrice = $(this).val();
-                $('#unitprice').val(selectedPrice);
+            $('#item_name').append('<option disabled selected>Select item</option>');
+            data.data.forEach(function(product_name) {
+                $('.item_name').append('<option value="' + product_name + '">' + product_name + '</option>');
             });
         }
     });
-     });
+
+    $('.item_name').change(function(){
+        var item = $(this).val();
+        $.ajax({
+            url: "{{ route('getprice') }}",
+            type: "GET",
+            data: {item: item},
+            success: function(response) {
+                var data = response.data;
+                $('.unitprice').val(data);
+                calculateTotal();
+            }
+        });
+    });
+
+    $('.qty').change(function(){
+        calculateTotal();
+    });
+});
+
+function calculateTotal() {
+    var quantity = parseInt($('.qty').val());
+    var unitPrice = parseFloat($('.unitprice').val());
+    var totalAmount = quantity * unitPrice;
+    console.log(totalAmount);
+    $('#cost').val(totalAmount.toFixed(2));
+}
+
         });
     </script>
 
