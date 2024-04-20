@@ -156,8 +156,8 @@ public function Addorder(Request $request){
     $newOrderId = 'OD' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
 
     $latestCustomerId = DB::table('orders')->max('customer_id');
-    $lastNumber = intval(substr($latestCustomerId, 2)); 
-    $newCustomerId = 'CST' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+    $lastNum = intval(substr($latestCustomerId, 2)); 
+    $newCustomerId = 'CST' . str_pad($lastNum + 1, 2, '0', STR_PAD_LEFT); 
     DB::table('orders')->insert([
 'order_id' => $newOrderId,
 'customer_id'=>$newCustomerId,
