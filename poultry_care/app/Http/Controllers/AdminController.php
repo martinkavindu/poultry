@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use Illuminate\Support\Facades\DB;
+use Twilio\Rest\Client;
 
 class AdminController extends Controller
 {
@@ -174,6 +175,21 @@ public function Addorder(Request $request)
         'quantity' => $request->quantity,
         'order_status' => $request->order_status,
     ]);
+ 
+
+    $account_sid = config('services.twilio.sid');
+    $account_token = config('services.twilio.token');
+    $number = config('services.twilio.from');  
+    
+    
+
+$client =  new Client($account_sid,$account_token);
+$client->messages->create($request->customer_phone,[
+    'from' =>$number,
+    'body'=>'Thank you customer your order has been received'
+]);
+
+
 
     return redirect()->route('customer.orders')->with('message', 'Order created successfully');
 }
