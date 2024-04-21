@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ordersResource;
 use App\Http\Requests\V1\StoreOrderRequest;
+use Twilio\Rest\Client;
 
 class ApiController extends Controller
 {
@@ -49,6 +50,18 @@ public function store(StoreOrderRequest $request){
             'quantity' => $request->quantity,
             // 'order_status' => $request->order_status,
         ]);
+
+        $account_sid = config('services.twilio.sid');
+        $account_token = config('services.twilio.token');
+        $number = config('services.twilio.from');  
+        
+        
+    
+    $client =  new Client($account_sid,$account_token);
+    $client->messages->create($request->customer_phone,[
+        'from' =>$number,
+        'body'=>'Thank you customer your order has been received'
+    ]);
     
 }
 
