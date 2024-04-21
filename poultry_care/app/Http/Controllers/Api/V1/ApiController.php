@@ -14,7 +14,7 @@ class ApiController extends Controller
 {
 public function index(){
 
-    return Orders::all();
+    return  Orders::all();
 }
 
 // public function show(Orders $orders){
@@ -43,6 +43,7 @@ public function store(StoreOrderRequest $request){
             'customer_email' => $request->customer_email,
             'customer_phone' => $request->customer_phone,
             'amount' => $request->amount,
+            'order_type' => 'website',
             // 'payment_status' => $request->payment_status,
             'order_item' => $request->order_item,
             'quantity' => $request->quantity,
