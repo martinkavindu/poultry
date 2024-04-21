@@ -149,29 +149,34 @@ $price = DB::table('products')->where('product_name',$item)->pluck('product_pric
 return response()->json(['success'=>true,'data'=>$price]);
 }
 
-public function Addorder(Request $request){
- 
+public function Addorder(Request $request)
+{
+    // Generate new order ID
     $latestOrderId = DB::table('orders')->max('order_id');
-    $lastNumber = intval(substr($latestOrderId, 2)); 
-    $newOrderId = 'OD' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+    $lastOrderNumber = intval(substr($latestOrderId, 2)); 
+    $newOrderId = 'OD' . str_pad($lastOrderNumber + 1, 2, '0', STR_PAD_LEFT); 
 
+    // Generate new customer ID
     $latestCustomerId = DB::table('orders')->max('customer_id');
-    $lastNum = intval(substr($latestCustomerId, 2)); 
-    $newCustomerId = 'CST' . str_pad($lastNum + 1, 2, '0', STR_PAD_LEFT); 
-    DB::table('orders')->insert([
-'order_id' => $newOrderId,
-'customer_id'=>$newCustomerId,
-'customer_name'=>$request->customer_name,
-'customer_email'=>$request->customer_email,
-'customer_phone' =>$request->customer_phone,
-'amount' => $request->amount,
-'payment_status' =>$request->payment_status,
-'order_item'  =>$request->item,
-'quantity'  =>$request->quantity,
-'order_status'=>$request->order_status,
+    $lastCustomerNumber = intval(substr($latestCustomerId, 2)); 
+    $newCustomerId = 'CT' . str_pad($lastCustomerNumber + 1, 2, '0', STR_PAD_LEFT); 
 
+
+    DB::table('orders')->insert([
+        'order_id' => $newOrderId,
+        'customer_id' => $newCustomerId,
+        'customer_name' => $request->customer_name,
+        'customer_email' => $request->customer_email,
+        'customer_phone' => $request->customer_phone,
+        'amount' => $request->amount,
+        'payment_status' => $request->payment_status,
+        'order_item' => $request->item,
+        'quantity' => $request->quantity,
+        'order_status' => $request->order_status,
     ]);
 
-    return redirect()->route('customer.orders')->with('message','Order created successfully');
+    return redirect()->route('customer.orders')->with('message', 'Order created successfully');
 }
+
+
 }

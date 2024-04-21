@@ -109,7 +109,7 @@
           
               <div class="form-group">
                 <label for="exampleFormControlInput1">Payment status</label>
-             <select class="form-control" name="payment_status">
+             <select class="form-control" name="payment_status" id="payment_status">
                 <option selected disabled>Select payment status</option>
                 <option value="paid">Paid</option>
                 <option value="pending">Pending</option>
@@ -132,7 +132,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Order status</label>
-             <select class="form-control" name="order_status">
+             <select class="form-control" name="order_status" id="order_status">
                 <option selected disabled>Select order status</option>
                 <option value="processing">processing</option>
                 <option value="pending">pending </option>

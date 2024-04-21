@@ -23,8 +23,32 @@ public function index(){
 // }
 
 public function store(StoreOrderRequest $request){
-
-    return  Orders::create($request->all());
+ 
+        // Generate new order ID
+        $latestOrderId = DB::table('orders')->max('order_id');
+        $lastNumber = intval(substr($latestOrderId, 2)); 
+        $newOrderId = 'OD' . str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT); 
+    
+        // Generate new customer ID
+        $latestCustomerId = DB::table('orders')->max('customer_id');
+        $lastCustomerNumber = intval(substr($latestCustomerId, 2)); 
+        $newCustomerId = 'CT' . str_pad($lastCustomerNumber + 1, 2, '0', STR_PAD_LEFT); 
+    
+    
+        // Insert new order
+      return  DB::table('orders')->insert([
+            'order_id' => $newOrderId,
+            'customer_id' => $newCustomerId,
+            'customer_name' => $request->customer_name,
+            'customer_email' => $request->customer_email,
+            'customer_phone' => $request->customer_phone,
+            'amount' => $request->amount,
+            // 'payment_status' => $request->payment_status,
+            'order_item' => $request->order_item,
+            'quantity' => $request->quantity,
+            // 'order_status' => $request->order_status,
+        ]);
+    
 }
 
 }
