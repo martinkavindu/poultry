@@ -3,7 +3,7 @@
 @section('content')
 <div>
 
-  <button class="btn btn-primary btn-xs mb-2 addsales"data-toggle="modal" data-target="#Addsales"> Add</button>
+  <button class="btn btn-primary  mb-2 addsales"data-toggle="modal" data-target="#Addsales"> Add Sale</button>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">All Sales list</div>
@@ -38,8 +38,8 @@ $totalAmount = 0;
 <td>{{$item->total_price}}</td>
 <td>{{$item->notes}}</td>
 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
-<td> <a href="#" class="btn btn-sm btn-primary updatesales" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
-    <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>
+<td> 
+    <a  onclick = "confirmation(event)"href="{{route('delete.sale',$item->id)}}"><button class="btn btn-danger">Delete</button></a>
 </td>
 
 </tr>
@@ -50,7 +50,7 @@ $totalAmount += $item->total_price;
 <tr>
 <td colspan="4"></td>
 <td><strong>Total:</strong></td>
-<td> <b>{{ $totalAmount }}</b></td>
+<td> <b>{{ number_format($totalAmount,2) }}</b></td>
 <td colspan="6"></td>
 </tr>
 </tbody>

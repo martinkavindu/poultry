@@ -216,4 +216,11 @@ DB::table('sales')->insert([
 return redirect()->route('all.sales')->with('message', 'Sale added successfully');
 }
 
+public function Deletesale($id){
+
+    DB::table('sales')->where('id',$id)->delete();
+    return redirect()->route('all.sales')->with('message', 'Sale deleted successfully');
+     
+}
+
 }
