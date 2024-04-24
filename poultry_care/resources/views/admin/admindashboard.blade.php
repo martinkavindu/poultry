@@ -363,6 +363,56 @@ function calculateTotal() {
         });
     </script>
 
+    <script>
+    
+    $(document).ready(function(){
+$('.addsales').click(function(){
+
+ $.ajax({
+       url: "{{ route('allproducts') }}",
+        type: 'GET',
+
+        success:function(data){
+     
+         $('#product').empty();
+         $('#product').append('<option disabled selected>Select item</option>');
+           
+         data.data.forEach(function(product_name) {
+        
+        $('#product').append('<option value="' + product_name + '">' + product_name + '</option>');
+            });
+        }
+ })
+ $('#product').change(function(){
+        var item = $(this).val();
+        $.ajax({
+            url: "{{ route('getprice') }}",
+            type: "GET",
+            data: {item: item},
+            success: function(response) {
+                var data = response.data;
+                $('#unitprice').val(data);
+                calculateTotal();
+            }
+        });
+    });
+
+    $('#discount').change(function(){
+        calculateTotal();
+    });
+});
+function calculateTotal() {
+    var quantity = parseInt($('.qty').val());
+    var unitPrice = parseFloat($('#unitprice').val());
+    var discount = parseFloat($('#discount').val());
+    var totalAmount = (quantity * unitPrice) - discount;
+    console.log(totalAmount);
+    $('.cost').val(totalAmount.toFixed(2));
+}
+
+    });
+     </script>
+
     </body>
 
     </html>

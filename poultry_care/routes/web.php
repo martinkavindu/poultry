@@ -56,6 +56,8 @@ Route::get('/all/products',[AdminController::class,'Allproducts'])->name('allpro
 Route::get('/price',[AdminController::class,'Getprice'])->name('getprice');
 Route::post('/add/orders',[AdminController::class,'Addorder'])->name('addorder');
 
+Route::get('/all/productdata',[AdminController::class,'ProductData'])->name('product.data');
+Route::post('/add/sales',[AdminController::class,'AddSales'])->name('add.sales');
 
 });
 

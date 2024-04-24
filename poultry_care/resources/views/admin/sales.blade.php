@@ -3,7 +3,7 @@
 @section('content')
 <div>
 
-  <button class="btn btn-primary btn-xs mb-2"data-toggle="modal" data-target="#Addsales"> Add</button>
+  <button class="btn btn-primary btn-xs mb-2 addsales"data-toggle="modal" data-target="#Addsales"> Add</button>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">All Sales list</div>
@@ -12,13 +12,14 @@
 <thead class="thead-light" style="">
 <tr>
 <th>S/N</th>
-<th>Sales ID</th>
-<th>Proudct ID</th>
+
 <th>Product Name</th>
 <th>Unit Price(KES)</th>
 <th>Quantity</th>
-<th>Total price(KSH)</th>
+<th>Discount</th>
+<th>Total Amount(KSH)</th>
 <th>Note</th>
+<th>Date Created</th>
 <th>Action</th>
 
 </tr>
@@ -30,16 +31,12 @@ $totalAmount = 0;
 @foreach ($sales as $index => $item)
 <tr>
 <td>{{ $index + 1 }}</td>
-<td>{{ $item->order_id }}</td>
-<td>{{ $item->customer_id }}</td>
-<td>{{ $item->customer_name }}</td>
-<td>{{ $item->customer_email }}</td>
-<td>{{ $item->customer_phone }}</td>
-<td>{{ $item->amount }}</td>
-<td>{{ $item->payment_status }}</td>
-<td>{{ $item->order_item }}</td>
-<td>{{ $item->number_items }}</td>
-
+<td>{{ $item->product }}</td>
+<td>{{ $item->unit_price}}</td>
+<td>{{ $item->Quantity}}</td>
+<td>{{ $item->discount}}</td>
+<td>{{$item->total_price}}</td>
+<td>{{$item->notes}}</td>
 <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
 <td> <a href="#" class="btn btn-sm btn-primary updatesales" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
     <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>
@@ -47,13 +44,13 @@ $totalAmount = 0;
 
 </tr>
 @php
-$totalAmount += $item->amount;
+$totalAmount += $item->total_price;
 @endphp
 @endforeach
 <tr>
-<td colspan="7"></td>
+<td colspan="4"></td>
 <td><strong>Total:</strong></td>
-<td>{{ $totalAmount }}</td>
+<td> <b>{{ $totalAmount }}</b></td>
 <td colspan="6"></td>
 </tr>
 </tbody>
@@ -77,35 +74,39 @@ $totalAmount += $item->amount;
         </div>
         
         <!-- Modal body -->
-        <form action="{{route('updateorder')}}" method="POST">
+        <form action="{{route('add.sales')}}" method="POST">
             @csrf
         <div class="modal-body">
          <input type="hidden" id="orderid" class="form-control" name="id">
          <div class="form-group">
             <label for="exampleFormControlInput1">Product</label>
-            <input type="text" class="form-control" id="product_id" name="product_id">
+           <select class="form-control" name="product" id="product"></select>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="exampleFormControlInput1">Customer</label>
             <input type="text" class="form-control" id="customer_id" name="customer_id">
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="exampleFormControlInput1">Quantity</label>
-            <input type="text" class="form-control" id="quantity" name="quantity">
+            <input type="text" class="form-control qty" id="quantity" name="quantity" required>
           </div>
 
           <div class="form-group">
             <label for="exampleFormControlInput1">Unit Price</label>
-            <input type="text" class="form-control" id="unit_price" name="unit_price">
+            <input type="text" class="form-control" id="unitprice" name="unit_price" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Discount(KES)</label>
+            <input type="text" class="form-control" id="discount" name="discount" required>
           </div>
       
           <div class="form-group">
-            <label for="exampleFormControlInput1">Total price</label>
-            <input type="text" class="form-control" id="total_price" name="tota_price">
+            <label for="exampleFormControlInput1">Total price(KES)</label>
+            <input type="text" class="form-control cost" id="total_price" name="total_price" readonly>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Notes</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="" rows="3" name="notes"></textarea>
           </div>
 
         </div>

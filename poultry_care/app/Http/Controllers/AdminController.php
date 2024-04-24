@@ -141,6 +141,13 @@ public function Allproducts(){
 
     return response()->json(['success'=>true,'data'=>$products]);
 }
+ 
+
+public function ProductData(){
+
+    $productdata = DB::table('products')->get();
+    return response()->json(['success'=>true,'data'=>$productdata]);
+}
 
 public function Getprice(Request $request){
 
@@ -194,5 +201,19 @@ $client->messages->create($request->customer_phone,[
     return redirect()->route('customer.orders')->with('message', 'Order created successfully');
 }
 
+
+public function AddSales(Request $request){
+
+DB::table('sales')->insert([
+    'product' => $request->product,
+    'Quantity' => $request->quantity,
+    'unit_price' =>$request->unit_price,
+    'total_price' =>$request->total_price,
+    'notes'      =>$request->notes,
+    'discount'   =>$request->discount
+]);
+
+return redirect()->route('all.sales')->with('message', 'Sale added successfully');
+}
 
 }
