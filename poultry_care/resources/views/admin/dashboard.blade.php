@@ -11,7 +11,7 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
     <div class="small-box bg-primary">
     <div class="inner text-center">
-    <h3 id="regmembers">{{number_format($total,2)}}</h3>
+    <h3 id="regmembers"><b>{{number_format($total)}}</b></h3>
     <p>Total Customers</p>
     </div>
     <div class="icon text-center">
@@ -27,7 +27,7 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
     <div class="small-box bg-green">
     <div class="inner text-center">
-    <h3 id="regmembers">{{ number_format($total,2) }}</h3>
+    <h3 id="regmembers"><b>{{ number_format($total) }}</b></h3>
     <p>Total Orders</p>
     </div>
     <div class="icon text-center">
@@ -43,14 +43,14 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
     <div class="small-box bg-warning">
     <div class="inner text-center">
-    <h3 id="regmembers"> KSH 160000.00</h3>
-    <p>Last 30 Days Sales</p>
+    <h3 id="regmembers"><b> {{number_format($salesTotal,2)}} KES</b></h3>
+    <p>Total Sales</p>
     </div>
     <div class="icon text-center">
     <i class="fa fa-money" aria-hidden="true"></i>
     </div>
     <div class="small-box-footer">
-    <a href="" class="moreinfo">
+    <a href="{{route('all.sales')}}" class="moreinfo">
     More info <i class="fa fa-arrow-circle-right"></i>
     </a>
     </div>

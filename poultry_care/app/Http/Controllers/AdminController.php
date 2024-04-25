@@ -12,13 +12,13 @@ class AdminController extends Controller
 {
     public function adminDashboard(){
 
-    //   $orders = Orders::all();
-    //   $total = $orders->count();
     $orders = DB::select("SELECT * FROM orders");
     $total = count($orders);
     $neworders =DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
     $new =count($neworders);
-    return view('admin.dashboard',compact('total','orders','new','neworders'));
+    $salesTotal = DB::table('sales')->sum('total_price');
+
+    return view('admin.dashboard',compact('total','orders','new','neworders','salesTotal'));
     }
 
     public function Logout (Request $request){
