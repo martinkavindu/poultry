@@ -77,7 +77,7 @@ public function store(StoreOrderRequest $request){
         });
     }
     
-    // Return a response indicating success or failure of the insertion
+   
     return response()->json(['success' => $inserted]);
 }
 
