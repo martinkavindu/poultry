@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -182,7 +183,7 @@ public function Addorder(Request $request)
         'quantity' => $request->quantity,
         'order_status' => $request->order_status,
     ]);
- 
+ //sending  message
 
     $account_sid = config('services.twilio.sid');
     $account_token = config('services.twilio.token');
@@ -193,10 +194,23 @@ public function Addorder(Request $request)
 $client =  new Client($account_sid,$account_token);
 $client->messages->create($request->customer_phone,[
     'from' =>$number,
-    'body'=>'Thank you customer your order has been received'
+    'body'=>'Thank you customer your order has been received',
 ]);
+ // sending email
+ $data['name'] = $request->customer_name;
+ $data['email'] = $request->customer_email;
+ $data['title'] ="New order Received";
+ $data['order'] = $newOrderId;
+ $data['quantity'] = $request->quantity;
+ $data['cost']   = $request->amount;
+ $data['product'] = $request->item;
 
+ Mail::send('order_mail',['data'=>$data],function($message) use($data)
+ {
+    $message->to($data['email'])->subject($data['title']);
+ }
 
+);
 
     return redirect()->route('customer.orders')->with('message', 'Order created successfully');
 }
