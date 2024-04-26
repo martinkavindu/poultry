@@ -62,6 +62,21 @@ public function store(StoreOrderRequest $request){
         'from' =>$number,
         'body'=>'Thank you customer your order has been received'
     ]);
+
+    $data['name'] = $request->customer_name;
+    $data['email'] = $request->customer_email;
+    $data['title'] ="New order Received";
+    $data['order'] = $newOrderId;
+    $data['quantity'] = $request->quantity;
+    $data['cost']   = $request->amount;
+    $data['product'] = $request->item;
+   
+    Mail::send('order_mail',['data'=>$data],function($message) use($data)
+    {
+       $message->to($data['email'])->subject($data['title']);
+    }
+   
+   );
     
 }
 

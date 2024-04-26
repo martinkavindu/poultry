@@ -12,7 +12,7 @@
 
     <br/>
     <p> Your order has been successfully recieved </p>
-    <h3>Order number {{$data['order']}} Items ordered: {{$data['product']}} number :{{$data['quantity']}} Cost: {{$data['cost']}}</h3>
+    <h5>Order number {{$data['order']}} Items ordered: {{$data['product']}} number :{{$data['quantity']}} Cost: {{$data['cost']}}</h5>
 
     <p> Thank you</p>
 </body>
