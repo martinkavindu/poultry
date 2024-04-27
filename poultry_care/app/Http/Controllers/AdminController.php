@@ -18,8 +18,25 @@ class AdminController extends Controller
     $neworders =DB::select("SELECT * FROM orders WHERE order_status = 'pending'");
     $new =count($neworders);
     $salesTotal = DB::table('sales')->sum('total_price');
+    $quantityOrders = Orders::select(
+        DB::raw('MONTH(created_at) as month'),
+        DB::raw('SUM(quantity) as total_quantity')
+    )
+    ->whereMonth('created_at', '>=', 1) 
+    ->groupBy(DB::raw('MONTH(created_at)'))
+    ->get()
+    ->toArray();
+    $salesData= DB::table('sales')->select(
+        DB::raw('MONTH(created_at) as month'),
+        DB::raw('SUM(total_price) as total_price')
+    )
+    ->whereMonth('created_at', '>=', 1) 
+    ->groupBy(DB::raw('MONTH(created_at)'))
+    ->get()
+    ->toArray();
 
-    return view('admin.dashboard',compact('total','orders','new','neworders','salesTotal'));
+   
+    return view('admin.dashboard',compact('total','orders','new','neworders','salesTotal','quantityOrders','salesData'));
     }
 
     public function Logout (Request $request){

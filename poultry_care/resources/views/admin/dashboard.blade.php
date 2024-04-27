@@ -153,5 +153,11 @@
     </div>
     </div>
 
+    <div class="panel-body">
+        <div id="chart_div" style="height: 300px;"></div>
+
+     
+    </div>
+
 
     @endsection
