@@ -32,8 +32,11 @@ $totalAmount = 0;
 <td>{{ $item->customer_email }}</td>
 <td>{{ $item->customer_phone }}</td>
 <td></td>
-<td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
-    <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>
+<td>
+{{-- <td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
+    <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a> --}}
+
+    <a href="" class="btn btn-primary">Send email and sms</a>
 </td>
 
 </tr>
