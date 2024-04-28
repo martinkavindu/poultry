@@ -226,3 +226,92 @@
 
     
     @endsection
+
+
+
+
+{{-- 
+    <!-- Include Google Charts Library -->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Your script -->
+<script>
+    $(document).ready(function() {
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+    });
+
+    function drawCharts() {
+        var quantityOrders = {!! json_encode($quantityOrders) !!};
+        var salesData = {!! json_encode($salesData) !!};
+
+        // Draw column chart for quantity orders
+        drawColumnChart(quantityOrders);
+
+        // Draw pie chart for sales data
+        drawPieChart(salesData);
+    }
+
+    function drawColumnChart(quantityOrders) {
+        var data = [];
+        data.push(['Month', 'Quantity', 'Sales']);
+
+        var months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        var quantities = Array(12).fill(0);
+
+        quantityOrders.forEach(function(order) {
+            quantities[order.month - 1] = order.total_quantity;
+        });
+
+        for (var i = 0; i < 12; i++) {
+            data.push([months[i], quantities[i], 0]); // Sales set to 0 for column chart
+        }
+
+        var chartData = google.visualization.arrayToDataTable(data);
+
+        var options = {
+            title: 'Monthly Order Record and Sales',
+            legend: { position: 'bottom' },
+            hAxis: { title: 'Month' },
+            vAxis: { title: 'Amount' }, 
+            series: {
+                0: { targetAxisIndex: 0, color: 'blue' }, 
+                1: { targetAxisIndex: 0, color: 'green' } 
+            },
+            vAxes: {
+                0: { title: 'Amount of sales in KES and total quantity in order' } 
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(chartData, options);
+    }
+
+    function drawPieChart(salesData) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Sales');
+
+        var months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        salesData.forEach(function(sale) {
+            var salesAmount = parseFloat(sale.total_price); // Convert total_price to number
+            data.addRow([months[sale.month - 1], salesAmount]);
+        });
+
+        var options = {
+            title: 'Monthly Sales Distribution',
+            pieHole: 0.4 // Adding a hole in the center to create a donut chart
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script> --}}
