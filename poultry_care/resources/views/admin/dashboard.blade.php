@@ -178,7 +178,7 @@
         var quantityOrders = {!! json_encode($quantityOrders) !!};
         var salesData = {!! json_encode($salesData) !!};
 
-        // Prepare data for Google Charts
+        
         var data = [];
         data.push(['Month', 'Quantity', 'Sales']);
 
@@ -187,21 +187,17 @@
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
 
-        // Initialize quantities and sales for all months to zero
         var quantities = Array(12).fill(0);
         var sales = Array(12).fill(0);
 
-        // Update quantities with actual data
         quantityOrders.forEach(function(order) {
             quantities[order.month - 1] = order.total_quantity;
         });
 
-        // Update sales with actual data
         salesData.forEach(function(sale) {
             sales[sale.month - 1] = sale.total_price;
         });
 
-        // Populate data array
         for (var i = 0; i < 12; i++) {
             data.push([months[i], quantities[i], sales[i]]);
         }
@@ -212,13 +208,13 @@
             title: 'Monthly Order Record and Sales',
             legend: { position: 'bottom' },
             hAxis: { title: 'Month' },
-            vAxis: { title: 'Amount' }, // Common y-axis title
+            vAxis: { title: 'Amount' }, 
             series: {
-                0: { targetAxisIndex: 0, color: 'blue' }, // Quantity orders color
-                1: { targetAxisIndex: 0, color: 'green' } // Sales color
+                0: { targetAxisIndex: 0, color: 'blue' }, 
+                1: { targetAxisIndex: 0, color: 'green' } 
             },
             vAxes: {
-                0: { title: 'Amount of sales in KES and total quantity in order' } // Common y-axis
+                0: { title: 'Amount of sales in KES and total quantity in order' } 
             }
         };
 
