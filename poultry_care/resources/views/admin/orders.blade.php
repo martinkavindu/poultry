@@ -126,6 +126,11 @@
                 <input type="text" class="form-control" id="quantity" name="number_items">
               </div>
 
+              {{-- <div class="form-group">
+                <label for="exampleFormControlInput1">Unit price</label>
+                <input type="text" class="form-control" id="perunit" name="unit_price">
+              </div> --}}
+
               <div class="form-group">
                 <label for="exampleFormControlInput1">Amount</label>
                 <input type="text" class="form-control" id="amount" name="amount">

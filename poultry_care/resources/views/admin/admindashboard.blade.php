@@ -287,6 +287,7 @@
                      $('#customer_number').val(data.customer_id);
                      $('#customer_phone').val(data.customer_phone);
                      $('#item_name').val(data.order_item);
+            
                      $('#quantity').val(data.quantity);
                      $('#amount').val(data.amount);
                      $('#payment_status').val(data.payment_status);
