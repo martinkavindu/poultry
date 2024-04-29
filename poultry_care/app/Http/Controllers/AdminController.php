@@ -77,6 +77,7 @@ class AdminController extends Controller
     'product' =>$request->item_name,
     'Quantity' =>$request->number_items,
     'total_price' =>$request->amount,
+    'notes' =>"Custoner paid order"
     ]);
 
     }
