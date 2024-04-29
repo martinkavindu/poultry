@@ -118,7 +118,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Item name</label>
-                <input type="text" class="form-control" id="item_name" readonly>
+                <input type="text" class="form-control" id="item_name" name="item_name" readonly>
               </div>
 
               <div class="form-group">

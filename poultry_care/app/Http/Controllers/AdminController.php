@@ -72,6 +72,15 @@ class AdminController extends Controller
     'amount'     =>$request->amount,
     ]);
 
+    if ($request->payment_status =='paid') {
+    DB::table('sales')->insert([
+    'product' =>$request->item_name,
+    'Quantity' =>$request->number_items,
+    'total_price' =>$request->amount,
+    ]);
+
+    }
+
     return redirect()->route('customer.orders')->with('message','Order updated successfully');
 
    }
