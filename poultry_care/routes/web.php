@@ -54,6 +54,7 @@ Route::get('/get/product', [AdminController::class,'Getproduct'])->name('getprod
 Route::post('/update/product',[AdminController::class,'UpdateInventory'])->name('update.inventory');
 Route::get('/all/products',[AdminController::class,'Allproducts'])->name('allproducts');
 Route::get('/price',[AdminController::class,'Getprice'])->name('getprice');
+Route::get('/getquantity',[AdminController::class,'getQuantity'])->name('getquantity');
 Route::post('/add/orders',[AdminController::class,'Addorder'])->name('addorder');
 
 Route::get('/all/productdata',[AdminController::class,'ProductData'])->name('product.data');

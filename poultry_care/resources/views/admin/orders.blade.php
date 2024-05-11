@@ -123,9 +123,9 @@
 
               <div class="form-group">
                 <label for="exampleFormControlInput1">Quantity</label>
-                <input type="text" class="form-control" id="quantity" name="number_items">
+                <input type="text" class="form-control" id="quantity" name="number_items" required>
               </div>
-
+              <div class="error-message" style="color: red;"></div>
               {{-- <div class="form-group">
                 <label for="exampleFormControlInput1">Unit price</label>
                 <input type="text" class="form-control" id="perunit" name="unit_price">

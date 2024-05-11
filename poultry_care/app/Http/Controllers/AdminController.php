@@ -83,7 +83,6 @@ class AdminController extends Controller
     }
 
     return redirect()->route('customer.orders')->with('message','Order updated successfully');
-
    }
    public function Customers(){
 
@@ -185,9 +184,18 @@ $price = DB::table('products')->where('product_name',$item)->pluck('product_pric
 return response()->json(['success'=>true,'data'=>$price]);
 }
 
+public function getQuantity(Request $request){
+$quatity = DB::table('products')
+          ->where('product_name',$request->item)
+          ->pluck('Quantity');
+
+          return response()->json(['success'=>true,'data'=>$quatity]);
+
+}
+
 public function Addorder(Request $request)
 {
-    // Generate new order ID
+    // Generate new orde
     $latestOrderId = DB::table('orders')->max('order_id');
     $lastOrderNumber = intval(substr($latestOrderId, 2)); 
     $newOrderId = 'OD' . str_pad($lastOrderNumber + 1, 2, '0', STR_PAD_LEFT); 
@@ -196,7 +204,6 @@ public function Addorder(Request $request)
     $latestCustomerId = DB::table('orders')->max('customer_id');
     $lastCustomerNumber = intval(substr($latestCustomerId, 2)); 
     $newCustomerId = 'CT' . str_pad($lastCustomerNumber + 1, 2, '0', STR_PAD_LEFT); 
-
 
     DB::table('orders')->insert([
         'order_id' => $newOrderId,

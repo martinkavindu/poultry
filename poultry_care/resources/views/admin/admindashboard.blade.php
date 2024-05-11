@@ -37,7 +37,7 @@
     <aside id="sidebar" style="background: #03a84e">
     <div class="h-100">
     <div class="sidebar-logo">
-    <a href="#">Poultry Care</a>
+    <a href="#">Poultry Hub</a>
     <i class="fa-solid fa-kiwi-bird"></i>
     </div>
     <!-- Sidebar Navigation -->
@@ -212,6 +212,12 @@
     </main>
     </div>
     </div>
+    <div class="topnav" style = "padding: 20px;background:#bce8f5 !important;position: fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100%;" >
+      <h5 style="text-align: center;color:#DA2028;">Poultry Hub is a product of Martin kavindu</h5>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
@@ -350,6 +356,32 @@
     });
 
     $('.qty').change(function(){
+
+      var  quantity = $(this).val();
+      console.log(quantity);
+      var item = $('.item_name').val();
+     
+   $.ajax({
+   url:"{{route('getquantity')}}",
+   type:"GET",
+   data:{item:item},
+   success:function(data){
+
+  
+    var availableQuantity = data.data[0];
+
+     if (quantity > availableQuantity) {
+
+     alert(" Quantity entered exceeds available quantity");
+                   
+     $('.qty').val(availableQuantity);
+
+   }
+}
+
+   })
+
+
         calculateTotal();
     });
 });
@@ -358,7 +390,7 @@ function calculateTotal() {
     var quantity = parseInt($('.qty').val());
     var unitPrice = parseFloat($('.unitprice').val());
     var totalAmount = quantity * unitPrice;
-    console.log(totalAmount);
+
     $('#cost').val(totalAmount.toFixed(2));
 }
 
@@ -408,7 +440,6 @@ function calculateTotal() {
     var unitPrice = parseFloat($('#unitprice').val());
     var discount = parseFloat($('#discount').val());
     var totalAmount = (quantity * unitPrice) - discount;
-    console.log(totalAmount);
     $('.cost').val(totalAmount.toFixed(2));
 }
 
