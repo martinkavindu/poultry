@@ -63,6 +63,14 @@ public function store(StoreOrderRequest $request){
         'quantity' => $request->quantity,
     ]);
 
+    $remainder = $quantity - $request->quantity;
+
+    DB::table('products')
+            ->where('product_name',$request->item)
+            ->update([
+             'Quantity' =>$remainder
+            ]);
+
     // Check if insertion was successful before proceeding
     if ($inserted) {
         // Send SMS
