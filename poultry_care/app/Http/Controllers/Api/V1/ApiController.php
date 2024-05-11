@@ -36,6 +36,19 @@ public function store(StoreOrderRequest $request){
     $lastCustomerNumber = intval(substr($latestCustomerId, 2)); 
     $newCustomerId = 'CT' . str_pad($lastCustomerNumber + 1, 2, '0', STR_PAD_LEFT); 
 
+    $quantityAvailable = DB::table('products')
+                       ->where('product_name', $request->order_item)
+                       ->first();
+
+   $quantity = $quantityAvailable->Quantity;
+   
+
+    if($quantity < $request->quantity){
+
+        return response()->json(['success' =>false, 'message' => 'quantity entered is not available']);
+
+    }
+
 
     // Insert new order
     $inserted = DB::table('orders')->insert([
@@ -78,7 +91,8 @@ public function store(StoreOrderRequest $request){
     }
     
    
-    return response()->json(['success' => $inserted]);
+    return response()->json(['success' => true, 'message' => 'data inserted successfully']);
+
 }
 
 
