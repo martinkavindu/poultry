@@ -217,6 +217,22 @@ public function Addorder(Request $request)
         'quantity' => $request->quantity,
         'order_status' => $request->order_status,
     ]);
+
+
+    // products renaining
+    $quantityAvailable = DB::table('products')
+                       ->where('product_name', $request->item)
+                       ->first();
+
+   $quantity = $quantityAvailable->Quantity; 
+   
+   $remainder = $quantity - $request->quantity;
+
+   DB::table('products')
+           ->where('product_name',$request->item)
+           ->update([
+            'Quantity' =>$remainder
+           ]);
  //sending  message
 
     $account_sid = config('services.twilio.sid');
