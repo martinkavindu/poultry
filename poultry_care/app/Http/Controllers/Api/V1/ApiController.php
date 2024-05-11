@@ -48,7 +48,13 @@ public function store(StoreOrderRequest $request){
         return response()->json(['success' =>false, 'message' => 'quantity entered is not available']);
 
     }
+    $remainder = $quantity - $request->quantity;
 
+    DB::table('products')
+            ->where('product_name',$request->order_item)
+            ->update([
+             'Quantity' =>$remainder
+            ]);
 
     // Insert new order
     $inserted = DB::table('orders')->insert([
@@ -63,13 +69,7 @@ public function store(StoreOrderRequest $request){
         'quantity' => $request->quantity,
     ]);
 
-    $remainder = $quantity - $request->quantity;
 
-    DB::table('products')
-            ->where('product_name',$request->item)
-            ->update([
-             'Quantity' =>$remainder
-            ]);
 
     // Check if insertion was successful before proceeding
     if ($inserted) {
