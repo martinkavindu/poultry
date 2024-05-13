@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ordersResource;
 use App\Http\Requests\V1\StoreOrderRequest;
@@ -102,6 +104,38 @@ public function store(StoreOrderRequest $request){
     return response()->json(['success' => true, 'message' => 'data inserted successfully']);
 
 }
+
+//register api
+
+public function RegisterApi(Request $request){
+
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' =>'required|confirmed',
+    ]);
+
+    User::create([
+    "name" => $request->name,
+    'email' => $request->email,
+    'password' => Hash::make($request->password),
+    ]);
+
+    return response()->json(["success"=>true,"message"=>"user created successfully"]);
+
+}
+//login api
+public function LoginApi(Request $request){
+
+}
+
+//profile Api
+public function ProfileApi(){
+
+
+}
+
+
 
 
 }
