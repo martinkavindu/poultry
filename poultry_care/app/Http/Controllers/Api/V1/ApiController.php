@@ -145,7 +145,7 @@ if(!empty($token)){
  return response()->json(['success'=>true,'token'=>$token,'expiry'=>'180 mins']);
 
 }
-return response()->json(['success'=>false, 'message' => 'failed' ]);
+return response()->json(['success'=>false, 'message' => 'incorrect details' ]);
 
 }
 
@@ -164,6 +164,23 @@ public function LogoutApi(){
     auth()->logout();
 
     return response()->json(['success'=>true,'message'=>'logout successful']);
+}
+
+public function ChangePassword(Request $request){
+
+    $request->validate([
+        'new_password' => 'required',
+        'old_password' => 'required'
+    ]);
+
+    $user = auth()->user();
+    if (!Hash::check($request->old_password, $user->password)) {
+        return response()->json(['success' => false, 'message' => 'Current password is incorrect'], 400);
+    }
+
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+    return response()->json(['success' => true, 'message' => 'Password changed successfully']);
 }
 
 }

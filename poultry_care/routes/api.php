@@ -31,6 +31,7 @@ Route::group([
 ],function(){
     Route::get('profile',[ApiController::class,'ProfileApi']);
     Route::get('logout',[ApiController::class,'LogoutApi']);
+    Route::post('changepassword',[ApiController::class,'ChangePassword']);
 });
 
 });
