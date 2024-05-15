@@ -157,6 +157,11 @@ return response()->json(['success'=>true,'user'=>$userData]);
 }
 
 
+public function LogoutApi(){
 
+    auth()->logout();
+
+    return response()->json(['success'=>true,'message'=>'logout successful']);
+}
 
 }
