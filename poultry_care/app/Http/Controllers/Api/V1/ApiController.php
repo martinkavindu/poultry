@@ -134,16 +134,18 @@ $request->validate([
 
 ]);
 
+config(['jwt.ttl' => 180]);
+
 $token = JWTAuth::attempt([
     'email' => $request->email,
     'password' => $request->password,
 ]);
 if(!empty($token)){
 
- return response()->json(['success'=>true,'token'=>$token]);
+ return response()->json(['success'=>true,'token'=>$token,'expiry'=>'180 mins']);
 
 }
-return response()->json(['success'=>false, 'message' => 'failed']);
+return response()->json(['success'=>false, 'message' => 'failed' ]);
 
 }
 
