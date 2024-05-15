@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ordersResource;
 use App\Http\Requests\V1\StoreOrderRequest;
 use Twilio\Rest\Client;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Mail;
 
 class ApiController extends Controller
@@ -126,6 +127,25 @@ public function RegisterApi(Request $request){
 }
 //login api
 public function LoginApi(Request $request){
+
+$request->validate([
+    'password'=>'required',
+    'email' =>'required|email'
+
+]);
+
+$token = JWTAuth::attempt([
+    'email' => $request->email,
+    'password' => $request->password,
+]);
+if(!empty($token)){
+
+    return response()->json(['success'=>true,'token'=>$token]);
+
+}
+return response()->json(['success'=>false, 'message' => 'failed']);
+
+
 
 }
 
