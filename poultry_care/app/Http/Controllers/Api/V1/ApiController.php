@@ -140,18 +140,19 @@ $token = JWTAuth::attempt([
 ]);
 if(!empty($token)){
 
-    return response()->json(['success'=>true,'token'=>$token]);
+ return response()->json(['success'=>true,'token'=>$token]);
 
 }
 return response()->json(['success'=>false, 'message' => 'failed']);
-
-
 
 }
 
 //profile Api
 public function ProfileApi(){
 
+$userData = auth()->user();
+
+return response()->json(['success'=>true,'user'=>$userData]);
 
 }
 
