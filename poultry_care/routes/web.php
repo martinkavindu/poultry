@@ -65,7 +65,7 @@ Route::get('/delete/sale/{id}',[AdminController::class,'Deletesale'])->name('del
 
 //roles and permission
 Route::get('all/permission',[RoleController::class,'Allpermission'])->name('all.permission');
-
+Route::post('add/permission',[RoleController::class,'Addpermission'])->name('add.permission');
 
 });
 

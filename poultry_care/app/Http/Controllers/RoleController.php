@@ -14,4 +14,14 @@ $permissions = Permission::all();
 return view('admin.allpermission',compact('permissions'));
 
     }
+
+    public function Addpermission(Request $request){
+
+        $permission = Permission::create([
+            'name' =>$request->name,
+            'group_name'=>$request->group_name,
+        ]);
+
+        return redirect()->route('all.permission')->with('message', 'Permission created successfully');
+    }
 }

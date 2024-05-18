@@ -51,7 +51,7 @@
       </div>
       
       <!-- Modal body -->
-      <form action="{{route('add.sales')}}" method="POST">
+      <form action="{{route('add.permission')}}" method="POST">
           @csrf
       <div class="modal-body">
        <input type="hidden" id="permissionid" class="form-control" name="id">
