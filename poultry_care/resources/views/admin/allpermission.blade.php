@@ -29,6 +29,8 @@
             <a onclick="confirmation(event)" href="{{ route('delete.sale', $item->id) }}">
               <button class="btn btn-danger">Delete</button>
             </a>
+
+            <a href="" class="btn btn-warning"> Edit</a>
           </td>
         </tr>
         @endforeach
