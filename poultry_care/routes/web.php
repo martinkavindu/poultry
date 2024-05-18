@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\normalUserController;
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,11 @@ Route::post('/add/orders',[AdminController::class,'Addorder'])->name('addorder')
 Route::get('/all/productdata',[AdminController::class,'ProductData'])->name('product.data');
 Route::post('/add/sales',[AdminController::class,'AddSales'])->name('add.sales');
 Route::get('/delete/sale/{id}',[AdminController::class,'Deletesale'])->name('delete.sale');
+
+
+//roles and permission
+Route::get('all/permission',[RoleController::class,'Allpermission'])->name('all.permission');
+
 
 });
 

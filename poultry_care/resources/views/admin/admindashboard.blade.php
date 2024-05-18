@@ -177,20 +177,32 @@
     <button class="btn" type="button" data-bs-theme="dark"  style="color:black;background-color:#03a84e" >
     <span class="navbar-toggler-icon"></span>
     </button>
-    <div  class="sidebar-link" style="margin-left:85%;">
+
+    <div class="dropdown" style="margin-left: 110rem ;margin-right:10px">
+        <button class="btn btn-primary" type="button" data-toggle="dropdown"> <i class="fas fa-cog"></i>
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Role & Permission</a></li>
+          <li><a href="{{route('all.permission')}}">All Permission</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+      </div>
+    <div  class="sidebar-link" style="margin-left:%;">
     <div>
 
     </div>
+
+  
 
     <h3 style="font-size: 12px position-relative"> <i class="fa fa-user" aria-hidden="true">
  
     
     </i> {{Auth::user()->name}}
-    <a href="{{route('pending.orders')}}" >
+    {{-- <a href="{{route('pending.orders')}}" >
     <span class="translate-middle badge rounded-pill bg-success">
     {{$new}}
       </span> 
-    </a>
+    </a> --}}
     </h3>
 
     </div>
