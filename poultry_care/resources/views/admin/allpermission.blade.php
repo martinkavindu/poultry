@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-  <button class="btn btn-primary mb-2 addsales" data-toggle="modal" data-target="#Addsales">Add Permission</button>
+  <button class="btn btn-primary mb-2 addsales" data-toggle="modal" data-target="#addpermission">Add Permission</button>
 </div>
 <div class="panel panel-default">
   <div class="panel-heading">All Permissions</div>
@@ -38,4 +38,56 @@
     </table>
   </div>
 </div>
+
+
+<div class="modal" id="addpermission" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Permission</h4>
+        
+      </div>
+      
+      <!-- Modal body -->
+      <form action="{{route('add.sales')}}" method="POST">
+          @csrf
+      <div class="modal-body">
+       <input type="hidden" id="permissionid" class="form-control" name="id">
+       <div class="form-group">
+          <label for="exampleFormControlInput1">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+      
+        </div>
+   
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Group Name</label>
+          <select class="form-control form-select" name="group_name" id="group_name">
+
+          <option selected disabled> Select Group</option>
+
+          <option value="dashboard"> Dashboard Menu</option>
+          <option value="sales"> sales Menu</option>
+          <option value="orders">  Orders Menu</option>
+          <option value="inventory">  Inventory Menu</option>
+          <option value="batch_records"> Batch Flock Records</option>
+          <option value="hatchery_records"> Hatchery Records</option>
+          <option value="vaccination_records"> Vaccination Records</option>
+          <option value="farm_settings"> Farm settings</option>
+        </select>
+        </div>
+
+    
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 @endsection
