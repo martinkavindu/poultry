@@ -456,8 +456,15 @@ function calculateTotal() {
     $('.cost').val(totalAmount.toFixed(2));
 }
 
+
+$('.updatesales').click(function(){
+    var id = $(this).attr('data-id');
+    console.log(id)
+})
+
     });
      </script>
+
 
 
 

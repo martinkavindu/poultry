@@ -24,4 +24,10 @@ return view('admin.allpermission',compact('permissions'));
 
         return redirect()->route('all.permission')->with('message', 'Permission created successfully');
     }
+
+    public function Deletepermission($id){
+
+        Permission::where('id',$id)->delete();
+        return redirect()->route('all.permission')->with('message', 'Permission deleted successfully');
+    }
 }

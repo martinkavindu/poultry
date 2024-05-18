@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-  <button class="btn btn-primary mb-2 addsales" data-toggle="modal" data-target="#addpermission">Add Permission</button>
+  <button class="btn btn-primary mb-2 updatesales" data-toggle="modal" data-target="#addpermission">Add Permission</button>
 </div>
 <div class="panel panel-default">
   <div class="panel-heading">All Permissions</div>
@@ -26,11 +26,11 @@
           <td>{{ $item->name }}</td>
           <td>{{ $item->group_name }}</td>
           <td>
-            <a onclick="confirmation(event)" href="{{ route('delete.sale', $item->id) }}">
+            <a onclick="confirmation(event)" href="{{ route('delete.permission', $item->id) }}">
               <button class="btn btn-danger">Delete</button>
             </a>
 
-            <a href="" class="btn btn-warning"> Edit</a>
+            <a href="#" class="btn btn-warning updatesales" data-id="{{$item->id}}" data-toggle="modal" data-target="#addpermission"> Edit</a>
           </td>
         </tr>
         @endforeach
