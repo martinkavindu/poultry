@@ -459,7 +459,22 @@ function calculateTotal() {
 
 $('.updatesales').click(function(){
     var id = $(this).attr('data-id');
-    console.log(id)
+
+
+    $.ajax({
+
+        url:"{{route('get.permission')}}",
+        type:"get",
+        data: {id:id},
+        success:function(data){
+            
+        var data= data.data;
+
+        $('#permissionid').val(data.id);
+        $('#permissionname').val(data.name);
+        $('#group_name').val(data.group_name);
+        }
+    })
 })
 
     });

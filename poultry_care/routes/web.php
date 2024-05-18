@@ -68,6 +68,7 @@ Route::get('all/permission',[RoleController::class,'Allpermission'])->name('all.
 Route::post('add/permission',[RoleController::class,'Addpermission'])->name('add.permission');
 
 Route::get('delete/permission/{id}',[RoleController::class,'Deletepermission'])->name('delete.permission');
+Route::get('get/permission/',[RoleController::class,'Getpermission'])->name('get.permission');
 
 });
 

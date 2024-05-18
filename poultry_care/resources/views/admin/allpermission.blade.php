@@ -57,7 +57,7 @@
        <input type="hidden" id="permissionid" class="form-control" name="id">
        <div class="form-group">
           <label for="exampleFormControlInput1">Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+          <input type="text" class="form-control" id="permissionname" name="name" required>
       
         </div>
    
