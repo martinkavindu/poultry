@@ -70,10 +70,15 @@ Route::post('add/permission',[RoleController::class,'Addpermission'])->name('add
 Route::get('delete/permission/{id}',[RoleController::class,'Deletepermission'])->name('delete.permission');
 Route::get('get/permission/',[RoleController::class,'Getpermission'])->name('get.permission');
 
+Route::get('all/roles',[RoleController::class,'AllRoles'])->name('all.roles');
+Route::post('add/role',[RoleController::class,'Addrole'])->name('add.role');
+Route::get('delete/role/{id}',[RoleController::class,'Deleterole'])->name('delete.role');
+
 });
 
 
 Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/dashboard', [normalUserController::class, 'userDashboard'])->name('user.dashboard');
+    
 
 });

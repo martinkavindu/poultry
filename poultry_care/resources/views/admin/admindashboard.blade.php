@@ -185,7 +185,7 @@
         <ul class="dropdown-menu">
           <li><a href="#">Role & Permission</a></li>
           <li><a href="{{route('all.permission')}}">All Permission</a></li>
-          <li><a href="#">JavaScript</a></li>
+          <li><a href="{{route('all.roles')}}"> Roles center</a></li>
         </ul>
       </div>
     <div  class="sidebar-link" style="margin-left:%;">
@@ -457,7 +457,7 @@ function calculateTotal() {
 }
 
 
-$('.updatesales').click(function(){
+$('.updatepermission').click(function(){
     var id = $(this).attr('data-id');
 
 

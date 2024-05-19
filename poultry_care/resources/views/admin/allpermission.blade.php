@@ -30,7 +30,7 @@
               <button class="btn btn-danger">Delete</button>
             </a>
 
-            <a href="#" class="btn btn-warning updatesales" data-id="{{$item->id}}" data-toggle="modal" data-target="#addpermission"> Edit</a>
+            <a href="#" class="btn btn-warning updatepermission" data-id="{{$item->id}}" data-toggle="modal" data-target="#addpermission"> Edit</a>
           </td>
         </tr>
         @endforeach

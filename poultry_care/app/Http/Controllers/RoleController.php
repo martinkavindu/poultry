@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -47,5 +48,30 @@ class RoleController extends Controller
 
         $permission = Permission::where('id', $request->id)->first();
         return response()->json(['data' => $permission]);
+    }
+
+    public function AllRoles(){
+
+        $roles =Role::all();
+
+        return view('admin.allroles',compact('roles'));
+    }
+
+    public function AddRole(Request $request)
+    {
+
+        $role = Role::create([
+            'name' => $request->name,
+            
+        ]);
+
+        return redirect()->route('all.roles')->with('message', 'Role created successfully');
+    }
+
+
+    public function Deleterole($id){
+
+        Role::where('id',$id)->delete();
+        return redirect()->back()->with('message','Role deleted successfully');
     }
 }
