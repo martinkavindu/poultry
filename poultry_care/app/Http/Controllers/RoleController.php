@@ -74,4 +74,8 @@ class RoleController extends Controller
         Role::where('id',$id)->delete();
         return redirect()->back()->with('message','Role deleted successfully');
     }
+
+    public function Allrolespermission(){
+
+    }
 }
