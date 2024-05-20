@@ -75,7 +75,12 @@ class RoleController extends Controller
         return redirect()->back()->with('message','Role deleted successfully');
     }
 
-    public function Allrolespermission(){
+    public function Addrolespermission(){
+
+        $roles =  Role::all();
+        $permission =  Permission::all();
+        
+        return view('admin.addrolespermission',compact('roles','permission'));
 
     }
 }
