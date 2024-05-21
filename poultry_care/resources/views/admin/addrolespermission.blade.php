@@ -31,6 +31,40 @@
   Permission All
 </label>
   </div>
+
+
+  <hr>
+  @foreach ($permission_groups as $group)
+      
+
+
+  
+  <div class="row">
+<div class="col-3">
+
+  <div class="form-check mb-2">
+
+    <input type="checkbox" class="form-check-input">
+    <label class="form-check-label">
+   {{$group->group_name}}
+    </label>
+      </div>
+</div>
+
+<div class="col-3">
+
+  <div class="form-check mb-2">
+
+    <input type="checkbox" class="form-check-input">
+    <label class="form-check-label">
+      Permission All
+    </label>
+      </div>
+</div>
+  </div>
+
+
+  @endforeach
 </form>
   </div>
 </div>

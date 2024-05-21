@@ -79,8 +79,9 @@ class RoleController extends Controller
 
         $roles =  Role::all();
         $permission =  Permission::all();
+        $permission_groups = User::getpermissionGroups();
         
-        return view('admin.addrolespermission',compact('roles','permission'));
+        return view('admin.addrolespermission',compact('roles','permission','permission_groups'));
 
     }
 }
