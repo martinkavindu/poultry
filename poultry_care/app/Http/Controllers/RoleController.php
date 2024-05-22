@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
+use DB;
 
 class RoleController extends Controller
 {
@@ -83,5 +85,20 @@ class RoleController extends Controller
         
         return view('admin.addrolespermission',compact('roles','permission','permission_groups'));
 
+    }
+
+    public function Storerolepermission(Request $request){
+        $data = array();
+        $permissions = $request->permission;
+
+        foreach($permissions as $key => $item){
+
+        $data['role_id'] = $request->role_id;
+        $data['permission_id'] = $item;
+
+        DB::table('role_has_permissions')->insert($data);
+    }
+        return redirect()->back()->with('message','role and permission added successfuly');
+        
     }
 }

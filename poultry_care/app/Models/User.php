@@ -51,13 +51,13 @@ class User extends Authenticatable implements JWTSubject
       return [];
     }
 
-    public function  getpermissionGroups(){
+    public static  function getpermissionGroups(){
 
 $permission_groups = DB::table('permissions')->select('group_name')->groupBy('group_name')->get();
 return $permission_groups;
 
     }
-   public function getPermissions($group_name){
+   public static function  getPermissions($group_name){
 $permissions = DB::table('permissions')
               ->select('id','name')
               ->where('group_name',$group_name)

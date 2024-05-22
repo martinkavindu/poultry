@@ -4,17 +4,24 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<style type="text/css">
+  .form-check-label {
+    text-transform: capitalize !important;
+  }
+  </style>
+  
+
 <div class="card" style="width: 700px;align-content:center">
   <div class="card-header">
  Add Role&Permission
   </div>
   <div class="card-body">
-<form action="" method = "POST">
+<form action="{{route('store.permission.role')}}" method = "POST">
   @csrf
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Role Name</label>
-    <select class="form-control form-select">
+    <select class="form-control form-select" name="role_id">
       <option selected disabled>Select Role</option>
      @foreach($roles as $role)
      <option value="{{$role->id}}"> {{$role->name}}</option>
@@ -77,6 +84,8 @@
 
 
   @endforeach
+
+  <button type="submit" class="btn btn-success">Save </button>
 </form>
   </div>
 </div>
@@ -90,7 +99,7 @@ $('#checkdefaultmain').click(function(){
   } else{
 
     
-    $('input[type = checkbox]').prop('checked',true)
+    $('input[type = checkbox]').prop('checked',false)
 
   }
 })
