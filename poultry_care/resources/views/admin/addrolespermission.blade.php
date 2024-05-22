@@ -2,6 +2,8 @@
 
 @section('content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <div class="card" style="width: 700px;align-content:center">
   <div class="card-header">
  Add Role&Permission
@@ -26,8 +28,8 @@
 
   <div class="form-check mb-2">
 
-<input type="checkbox" class="form-check-input">
-<label class="form-check-label">
+<input type="checkbox" class="form-check-input" id="checkdefaultmain">
+<label class="form-check-label" >
   Permission All
 </label>
   </div>
@@ -61,7 +63,7 @@
     
   <div class="form-check mb-2">
 
-    <input type="checkbox" class="form-check-input">
+    <input type="checkbox" class="form-check-input" name="permission[]" id="{{$item->id}}" value="{{$item->id}}">
     <label class="form-check-label">
      {{$item->name}}
     </label>
@@ -79,6 +81,21 @@
   </div>
 </div>
 
+<script type="text/javascript">
+$('#checkdefaultmain').click(function(){
+
+  if($(this).is(':checked')){
+
+    $('input[type = checkbox]').prop('checked',true); 
+  } else{
+
+    
+    $('input[type = checkbox]').prop('checked',true)
+
+  }
+})
+
+  </script>
 
 
 @endsection
