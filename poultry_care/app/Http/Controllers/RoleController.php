@@ -98,7 +98,7 @@ class RoleController extends Controller
 
         DB::table('role_has_permissions')->insert($data);
     }
-        return redirect()->back()->with('message','role and permission added successfuly');
+        return redirect()->route('all.roles&permisssion')->with('message','role and permission added successfuly');
         
     }
 
