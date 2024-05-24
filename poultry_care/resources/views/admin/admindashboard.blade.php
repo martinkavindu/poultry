@@ -188,6 +188,7 @@
           <li><a href="{{route('all.roles')}}"> Roles center</a></li>
 
           <li><a href="{{route('add.roles&permissions')}}"> Roles & Permissions</a></li>
+          <li><a href="{{route('all.roles&permisssion')}}"> Roles & Permissions Center</a></li>
         </ul>
       </div>
     <div  class="sidebar-link" style="margin-left:%;">

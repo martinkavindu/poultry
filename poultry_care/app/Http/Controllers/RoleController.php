@@ -101,4 +101,10 @@ class RoleController extends Controller
         return redirect()->back()->with('message','role and permission added successfuly');
         
     }
+
+    public function Allrolespermission(){
+
+        $roles= Role::all();
+         return view('admin.allrolespermission',compact('roles'));
+    }
 }

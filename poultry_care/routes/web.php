@@ -76,6 +76,10 @@ Route::get('delete/role/{id}',[RoleController::class,'Deleterole'])->name('delet
 Route::get('add/roles&permissions',[RoleController::class,'Addrolespermission'])->name('add.roles&permissions');
 Route::post('store/role/permission',[RoleController::class,'Storerolepermission'])->name('store.permission.role');
 
+Route::get('all/roles&permission',[RoleController::class,'Allrolespermission'])->name('all.roles&permisssion');
+
+
+
 });
 
 
