@@ -117,6 +117,20 @@ $permission_groups = User::getpermissionGroups();
 return view('admin.editrolespermission',compact('role','permissions','permission_groups'));
 
 
-
     }
+
+    public function Updaterolepermission(Request $request,$id){
+
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        if(!empty($permissions)){
+            $role->permissions()->attach($permissions);
+        }
+
+        
+        return redirect()->route('all.roles&permisssion')->with('message','permissions updated successfully');
+    }
+
+
 }

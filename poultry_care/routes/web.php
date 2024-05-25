@@ -78,6 +78,9 @@ Route::post('store/role/permission',[RoleController::class,'Storerolepermission'
 Route::get('all/roles&permission',[RoleController::class,'Allrolespermission'])->name('all.roles&permisssion');
 
 Route::get('edit/permissionrole/{id}',[RoleController::class,'Editpermissionrole'])->name('edit.permissionrole');
+Route::post('update/role/permission/{id}',[RoleController::class,'Updaterolepermission'])->name('update.permission.role');
+
+
 
 
 

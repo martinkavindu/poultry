@@ -67,7 +67,7 @@ $permissions = DB::table('permissions')
 
     }
 
-    public function roleHasPermissions($role,$permissions){
+    public static function roleHasPermissions($role,$permissions){
 
       $hasPermission = true;
       foreach ($permissions as  $permission) {

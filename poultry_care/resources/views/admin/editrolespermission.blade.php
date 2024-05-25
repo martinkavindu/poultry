@@ -13,15 +13,15 @@
 
 <div class="card" style="width: 700px;align-content:center">
   <div class="card-header">
- Add Role&Permission
+ Edit Role&Permission
   </div>
   <div class="card-body">
-<form action="{{route('store.permission.role')}}" method = "POST">
+<form action="{{route('update.permission.role',$role->id)}}" method = "POST">
   @csrf
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Role Name</label>
-<h3>{{$role->name}}</h3>
+    <h3 style="color:black">{{$role->name}}</h3>
 
     </select>
    
@@ -67,7 +67,7 @@
   <div class="form-check mb-2">
 
     <input type="checkbox" class="form-check-input" name="permission[]" id="{{$permission->id}}" value="{{$permission->id}}"
-  {{$role->hasPermissionTo($$permission->name) ? "checked" : ""}}>
+  {{$role->hasPermissionTo($permission->name) ? "checked" : ""}}>
     <label class="form-check-label">
      {{$permission->name}}
     </label>
