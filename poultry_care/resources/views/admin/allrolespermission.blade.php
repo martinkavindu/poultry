@@ -23,7 +23,7 @@
           <td>{{ $index + 1 }}</td>
           <td>{{ $item->name }}</td>
           <td>
-            @foreach($item->permissions as $prem)
+          @foreach($item->permissions as $prem)
           <span class = "badge bg-success"> {{$prem->name}}</span>
             @endforeach
           </td>
