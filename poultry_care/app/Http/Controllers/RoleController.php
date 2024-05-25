@@ -107,4 +107,16 @@ class RoleController extends Controller
         $roles= Role::all();
          return view('admin.allrolespermission',compact('roles'));
     }
+
+    public function Editpermissionrole($id){
+
+$role = Role::findOrFail($id);
+$permissions = Permission::all();
+$permission_groups = User::getpermissionGroups();
+
+return view('admin.editrolespermission',compact('role','permissions','permission_groups'));
+
+
+
+    }
 }
