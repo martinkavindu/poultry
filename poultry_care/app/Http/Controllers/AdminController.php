@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
+use App\Models\User;
 use Mail;
 
 class AdminController extends Controller
