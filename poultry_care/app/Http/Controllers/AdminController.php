@@ -286,5 +286,10 @@ public function Deletesale($id){
     return redirect()->route('all.sales')->with('message', 'Sale deleted successfully');
      
 }
+public function Systemusers(){
+    $systemusers = User::where('role','admin')->get();
+
+    return view('admin.system_users',compact('systemusers'));
+}
 
 }
