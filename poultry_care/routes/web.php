@@ -80,6 +80,10 @@ Route::get('all/roles&permission',[RoleController::class,'Allrolespermission'])-
 Route::get('edit/permissionrole/{id}',[RoleController::class,'Editpermissionrole'])->name('edit.permissionrole');
 Route::post('update/role/permission/{id}',[RoleController::class,'Updaterolepermission'])->name('update.permission.role');
 
+Route::get('delete/permissionrole/{id}',[RoleController::class,'Deletepermissionrole'])->name('delete.permissionrole');
+
+
+
 
 
 

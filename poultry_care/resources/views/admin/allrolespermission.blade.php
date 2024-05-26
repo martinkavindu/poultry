@@ -28,8 +28,8 @@
             @endforeach
           </td>
           <td>
-            {{-- {{ route('delete.permissionrole', $item->id) }} --}}
-            <a onclick="confirmation(event)" href="#">
+            {{--  --}}
+            <a onclick="confirmation(event)" href="{{ route('delete.permissionrole', $item->id) }}">
               <button class="btn btn-danger">Delete</button>
             </a>
             <a href="{{ route('edit.permissionrole', $item->id) }}">

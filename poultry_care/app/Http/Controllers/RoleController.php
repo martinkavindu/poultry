@@ -132,5 +132,16 @@ return view('admin.editrolespermission',compact('role','permissions','permission
         return redirect()->route('all.roles&permisssion')->with('message','permissions updated successfully');
     }
 
+    public function Deletepermissionrole($id){
+
+        $role = Role::findOrFail($id);
+        if(!is_null($role)){
+
+            $role->delete();
+        }
+
+        return redirect()->back()->with('message','role deleted successfully');
+    }
+
 
 }
