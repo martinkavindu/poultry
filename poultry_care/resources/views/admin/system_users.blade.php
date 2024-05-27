@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-<button class="btn btn-sm btn-success mb-3">Add System User</button>
+<button class="btn btn-sm btn-success mb-3"data-toggle="modal" data-target=".updateModal">Add System User</button>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading"> All System Users</div>
@@ -27,7 +27,7 @@ $totalAmount = 0;
 <tr>
 <td>{{ $index + 1 }}</td>
 <td>
-<img src="{{(!empty($item->photo))? url('upload/'.$item->photo) : url('upload/profile.jpg')}}" style="width: 60px;height:40px">
+<img src="{{(!empty($item->photo))? url('uploads/'.$item->photo) : url('uploads/profile.jpg')}}" style="width: 60px;height:40px;border-radius:50%">
 </td>
 <td>{{ $item->username}}</td>
 <td>{{ $item->name }}</td>
@@ -35,7 +35,7 @@ $totalAmount = 0;
 <td>{{ $item->phone}}</td>
 
 
-<td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target="#updateModal"  data-id ="{{$item->id}}">Update</a>
+<td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target=".updateModal"  data-id ="{{$item->id}}">Update</a>
     <a  onclick = "confirmation(event)"href="{{route('delete.order',$item->id)}}"><button class="btn btn-sm btn-danger">Delete</button></a>
 
   
@@ -60,68 +60,53 @@ $totalAmount = 0;
 </div>
 
 
-<div class="modal" id="updateModal">
+<div class="modal updateModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Update order details</h4>
+          <h4 class="modal-title">System Users</h4>
           
         </div>
         
         <!-- Modal body -->
-        <form action="{{route('updateorder')}}" method="POST">
+        <form action="{{route('add.admin')}}" method="POST">
             @csrf
         <div class="modal-body">
-         <input type="hidden" id="orderid" class="form-control" name="id">
+         <input type="hidden" id="userid" class="form-control" name="id">
          <div class="form-group">
-            <label for="exampleFormControlInput1">Order Number</label>
-            <input type="text" class="form-control" id="order_id" readonly>
+            <label for="exampleFormControlInput1">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Customer Number</label>
-            <input type="text" class="form-control" id="customer_number" readonly>
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Customer Name</label>
-            <input type="text" class="form-control" id="customer_name" readonly>
+            <label for="exampleFormControlInput1">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Role Name</label>
+            <select class="form-control form-select" name="roles" id="roles">
+              <option selected disabled>Select Role</option>
+             @foreach($roles as $role)
+             <option value="{{$role->id}}"> {{$role->name}}</option>
+        
+             @endforeach
+        
+            </select>
+           
+        
           </div>
       
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Payment status</label>
-         <select class="form-control" name="payment_status">
-            <option selected disabled>Select payment status</option>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-            <option value="void">void</option>
-         </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Item name</label>
-            <input type="text" class="form-control" id="item_name" readonly>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Quantity</label>
-            <input type="text" class="form-control" id="quantity" name="number_items">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Amount</label>
-            <input type="text" class="form-control" id="amount" name="amount">
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Order status</label>
-         <select class="form-control" name="order_status">
-            <option selected disabled>Select order status</option>
-            <option value="processing">processing</option>
-            <option value="pending">pending </option>
-            <option value="completed">completed</option>
-            <option value="cancelled">cancelled</option>
-         </select>
-          </div>
-   
+           
 
 
         </div>

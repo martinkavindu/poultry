@@ -8,6 +8,8 @@ use App\Models\Orders;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
 use App\Models\User;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Mail;
 
 class AdminController extends Controller
@@ -289,8 +291,35 @@ public function Deletesale($id){
 }
 public function Systemusers(){
     $systemusers = User::where('role','admin')->get();
+    $roles = Role::all();
 
-    return view('admin.system_users',compact('systemusers'));
+    return view('admin.system_users',compact('systemusers','roles'));
+}
+
+public function Adduser(Request $request){
+
+$id = $request->id;
+
+if (!empty($id)) {
+   echo "update";
+}
+
+$user = new User();
+$user->name = $request->name;
+$user->email = $request->email;
+$user->phone = $request->phone;
+$user ->role  = 'admin';
+$user->status = 'active';
+$user->password = Hash::make($request->password);
+$user->username = $request->username;
+
+$user->save();
+
+if($request->roles){
+$user->assignRole($request->roles);
+}
+
+return redirect()->route('system.users')->with('message', 'Role added  successfully');
 }
 
 }
