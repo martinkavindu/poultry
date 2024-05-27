@@ -334,7 +334,7 @@ class AdminController extends Controller
             $user->assignRole($role);
         }
 
-        return redirect()->route('system.users')->with('message', 'Role added  successfully');
+        return redirect()->route('system.users')->with('message', 'User added  successfully');
     }
 
 }
