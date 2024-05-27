@@ -8,6 +8,7 @@ use App\Models\Orders;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Mail;
@@ -316,7 +317,8 @@ $user->username = $request->username;
 $user->save();
 
 if($request->roles){
-$user->assignRole($request->roles);
+    $role = Role::findById($request->roles);
+    $user->assignRole($role);
 }
 
 return redirect()->route('system.users')->with('message', 'Role added  successfully');
