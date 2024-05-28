@@ -1,6 +1,7 @@
 @extends('admin.admindashboard')
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div>
 <button class="btn btn-sm btn-success mb-3"data-toggle="modal" data-target=".updateModal">Add System User</button>
 </div>
@@ -132,6 +133,37 @@ $totalAmount = 0;
 
 
 
+<script>
+$(document).ready(function(){
 
+$('.updateorder').click(function(){
+
+ var id  = $(this).attr('data-id');
+
+ $.ajax({
+
+  url:"{{route('edit.users')}}",
+  type:'get',
+  data:{{id:id}}
+  success:function(data){
+    console.log(data);
+  }
+
+
+ })
+
+
+})
+
+
+
+
+
+
+
+
+})
+
+</script>
 
 @endsection

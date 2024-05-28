@@ -63,6 +63,8 @@ Route::post('/add/sales',[AdminController::class,'AddSales'])->name('add.sales')
 Route::get('/delete/sale/{id}',[AdminController::class,'Deletesale'])->name('delete.sale');
 Route::get('/system/users',[AdminController::class,'Systemusers'])->name('system.users');
 Route::post('/add/users',[AdminController::class,'Adduser'])->name('add.admin');
+Route::get('/edit/users',[AdminController::class,'Editusers'])->name('edit.users');
+
 
 //roles and permission
 Route::get('all/permission',[RoleController::class,'Allpermission'])->name('all.permission');
