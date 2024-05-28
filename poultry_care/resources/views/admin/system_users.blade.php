@@ -16,6 +16,7 @@
 <th>Name</th>
 <th>Email</th>
 <th>Phone Number</th>
+<th>Role</th>
 <th>Actions</th>
 </tr>
 </thead>
@@ -33,6 +34,14 @@ $totalAmount = 0;
 <td>{{ $item->name }}</td>
 <td>{{ $item->email}}</td>
 <td>{{ $item->phone}}</td>
+<td>
+  @foreach ($item->roles as $role)
+  <span class="badge badge-pill bg-warning"> {{$role->name}}</span>
+      
+  @endforeach  
+
+
+</td>
 
 
 <td> <a href="#" class="btn btn-sm btn-primary updateorder" data-toggle="modal" data-target=".updateModal"  data-id ="{{$item->id}}">Update</a>
