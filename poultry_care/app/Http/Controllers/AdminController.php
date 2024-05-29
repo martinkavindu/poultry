@@ -315,7 +315,25 @@ class AdminController extends Controller
         $id = $request->id;
 
         if (!empty($id)) {
-            echo "update";
+
+            $user = User::findOrFail($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->username = $request->username;
+    
+            $user->save();
+
+        $user->roles()->detach();
+
+        if ($request->roles) {
+            $role = Role::findById($request->roles);
+            $user->assignRole($role);
+        }
+
+        return redirect()->route('system.users')->with('message', 'User updated  successfully');
+
+
         }
 
         $user = new User();
@@ -337,4 +355,13 @@ class AdminController extends Controller
         return redirect()->route('system.users')->with('message', 'User added  successfully');
     }
 
+
+    public function Editusers(Request $request){
+
+        $id = $request->id;
+
+        $user = User::findOrFail($id);
+
+        return response()->json(['data'=>$user]);
+    }
 }

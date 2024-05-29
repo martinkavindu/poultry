@@ -97,7 +97,7 @@ $totalAmount = 0;
             <label for="exampleFormControlInput1">Email Address</label>
             <input type="email" class="form-control" id="email" name="email">
           </div>
-          <div class="form-group">
+          <div class="form-group password">
             <label for="exampleFormControlInput1">Password</label>
             <input type="password" class="form-control" id="password" name="password">
           </div>
@@ -138,15 +138,27 @@ $(document).ready(function(){
 
 $('.updateorder').click(function(){
 
+  $('.password').hide();
+
  var id  = $(this).attr('data-id');
+ $('#userid').val(id);
 
  $.ajax({
 
   url:"{{route('edit.users')}}",
   type:'get',
-  data:{{id:id}}
+  data: { id: id },
   success:function(data){
-    console.log(data);
+   var data = data.data;
+
+   $('#username').val(data.username);
+   $('#name').val(data.name);
+   $('#email').val(data.email);
+  
+
+   var role = data.data.role;
+$('#roles').append(`<option value="${role}" selected>${role}</option>`);
+
   }
 
 

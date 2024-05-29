@@ -463,6 +463,8 @@ function calculateTotal() {
 
 
 $('.updatepermission').click(function(){
+
+    
     var id = $(this).attr('data-id');
 
 
