@@ -364,4 +364,16 @@ class AdminController extends Controller
 
         return response()->json(['data'=>$user]);
     }
+
+    public function Deleteuser($id){
+
+    $user= User::findOrFail($id);
+
+    if(!empty($user)){
+
+        $user->delete();
+    }
+
+    return redirect()->route('system.users')->with('message', 'User deleted  successfully');
+    }
 }
