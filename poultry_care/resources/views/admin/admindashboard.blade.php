@@ -29,13 +29,6 @@
     <script type="text/javascript" src="{{ asset('js/multiselect-dropdown.js') }}"></script>
 
     <title>admin dashboard</title>
-    <style>
-
-    body {
-        font-size: 16px !important;
-        line-height: 1.5;
-    }
-    </style>
     
     </head>
 
