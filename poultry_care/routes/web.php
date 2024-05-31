@@ -47,7 +47,7 @@ Route::get('/edit/orders', [AdminController::class, 'Editorder'])->name('orderde
 Route::post('/update/orders', [AdminController::class, 'UpdateOrder'])->name('updateorder');
 Route::get('/poultry/customers', [AdminController::class, 'Customers'])->name('customers');
 Route::get('/pending/orders', [AdminController::class, 'PendingOrders'])->name('pending.orders');
-Route::get('/all/sales', [AdminController::class, 'Allsales'])->name('all.sales');
+Route::get('/all/sales', [AdminController::class, 'Allsales'])->name('all.sales')->middleware('permission:view sales');
 Route::get('/all/inventory', [AdminController::class, 'AllInventory'])->name('all.inventory');
 Route::post('/add/inventory',[AdminController::class,'Addinventory'])->name('add.inventory');
 Route::get('/delete/product/{id}', [AdminController::class,'Deleteproduct'])->name('delete.product');
