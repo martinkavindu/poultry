@@ -38,7 +38,7 @@ require __DIR__.'/auth.php';
 
 //middleware 
 
-Route::middleware(['auth','role:admin'])->group(function(){
+Route::middleware(['auth','roles:admin'])->group(function(){
 Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
 Route::get('/logout/admin',[AdminController::class,'Logout'])->name('admin.logout');
 Route::get('/customer/orders',[AdminController::class,'Orders'])->name('customer.orders');
@@ -97,7 +97,7 @@ Route::get('delete/permissionrole/{id}',[RoleController::class,'Deletepermission
 });
 
 
-Route::middleware(['auth','role:user'])->group(function(){
+Route::middleware(['auth','roles:user'])->group(function(){
     Route::get('/user/dashboard', [normalUserController::class, 'userDashboard'])->name('user.dashboard');
     
 
