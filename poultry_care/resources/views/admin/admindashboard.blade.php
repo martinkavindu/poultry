@@ -65,6 +65,7 @@
         
     </ul> --}}
     </li>
+    @if(Auth::user()->can('view sales'))
 
     <li class="sidebar-item">
     <a href="{{route('all.sales')}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#multi"
@@ -90,6 +91,8 @@
         
     </ul> --}}
     </li>
+
+    @endif
 
     <li class="sidebar-item">
     <a href="{{route('customer.orders')}}" class="sidebar-link collapsed1" data-bs-toggle="collapse1" data-bs-target="#auth"
