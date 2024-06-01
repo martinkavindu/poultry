@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Exports\permissionsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PermissionsImport;
 use DB;
 
 class RoleController extends Controller
@@ -152,6 +153,13 @@ return view('admin.editrolespermission',compact('role','permissions','permission
         return Excel::download(new permissionsExport, 'permission.xlsx');
         
     }
+public function Importpermission(Request $request){
 
+    Excel::import(new PermissionsImport, $request->file('importfile'));
+        
+    return redirect()->route('all.permission')->with('message', 'successfully imported');
+
+
+}
 
 }

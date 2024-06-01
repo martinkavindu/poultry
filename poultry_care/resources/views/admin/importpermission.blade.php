@@ -9,7 +9,7 @@
     
     </div>
     <div class="card-body">
-        <form action="{{route('store.permission')}}" type = "POST">
+        <form action="{{route('import.permission')}}" type = "POST" enctype="multipart/form-data">
           @csrf
          
         <div class="mb-3">

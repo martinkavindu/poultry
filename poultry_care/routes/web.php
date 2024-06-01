@@ -89,13 +89,7 @@ Route::post('update/role/permission/{id}',[RoleController::class,'Updateroleperm
 
 Route::get('delete/permissionrole/{id}',[RoleController::class,'Deletepermissionrole'])->name('delete.permissionrole');
 Route::get('/export/permission',[RoleController::class,'Exportpermission'])->name('export');
-
-
-
-
-
-
-
+Route::get('/import/permission',[RoleController::class,'Importpermission'])->name('import.permission');
 
 
 });
