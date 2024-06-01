@@ -69,6 +69,7 @@ Route::get('/import/permission',[AdminController::class,'Importpermission'])->na
 
 
 
+
 //roles and permission
 Route::get('all/permission',[RoleController::class,'Allpermission'])->name('all.permission');
 Route::post('add/permission',[RoleController::class,'Addpermission'])->name('add.permission');
@@ -87,6 +88,7 @@ Route::get('edit/permissionrole/{id}',[RoleController::class,'Editpermissionrole
 Route::post('update/role/permission/{id}',[RoleController::class,'Updaterolepermission'])->name('update.permission.role');
 
 Route::get('delete/permissionrole/{id}',[RoleController::class,'Deletepermissionrole'])->name('delete.permissionrole');
+Route::get('/export/permission',[RoleController::class,'Exportpermission'])->name('export');
 
 
 

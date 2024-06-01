@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use App\Exports\permissionsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use DB;
 
 class RoleController extends Controller
@@ -141,6 +143,14 @@ return view('admin.editrolespermission',compact('role','permissions','permission
         }
 
         return redirect()->back()->with('message','role deleted successfully');
+    }
+
+
+    
+    public function Exportpermission(){
+
+        return Excel::download(new permissionsExport, 'permission.xlsx');
+        
     }
 
 
