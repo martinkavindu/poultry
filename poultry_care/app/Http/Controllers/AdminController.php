@@ -376,4 +376,9 @@ class AdminController extends Controller
 
     return redirect()->route('system.users')->with('message', 'User deleted  successfully');
     }
+
+    public function Importpermission(){
+
+        return view('admin.importpermission');
+    }
 }

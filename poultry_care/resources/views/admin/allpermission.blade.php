@@ -1,9 +1,14 @@
 @extends('admin.admindashboard')
 
 @section('content')
+
+
+
 <div>
   <button class="btn btn-primary mb-2 updatesales" data-toggle="modal" data-target="#addpermission">Add Permission</button>
+ <a href="{{route('import.permission')}}" class="btn btn-warning">Import</a>
 </div>
+
 <div class="panel panel-default">
   <div class="panel-heading">All Permissions</div>
   <div class="table-responsive">
@@ -88,6 +93,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 @endsection

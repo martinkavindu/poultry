@@ -65,6 +65,8 @@ Route::get('/system/users',[AdminController::class,'Systemusers'])->name('system
 Route::post('/add/users',[AdminController::class,'Adduser'])->name('add.admin');
 Route::get('/edit/users',[AdminController::class,'Editusers'])->name('edit.users');
 Route::get('/delete/user/{id}',[AdminController::class,'Deleteuser'])->name('delete.user');
+Route::get('/import/permission',[AdminController::class,'Importpermission'])->name('import.permission');
+
 
 
 //roles and permission
