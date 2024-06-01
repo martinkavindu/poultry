@@ -9,7 +9,8 @@
     
     </div>
     <div class="card-body">
-        <form action="" type = "">
+        <form action="{{route('store.permission')}}" type = "POST">
+          @csrf
          
         <div class="mb-3">
             <label for="formFile" class="form-label">Upload XLSX</label>

@@ -7,6 +7,7 @@
 <div>
   <button class="btn btn-primary mb-2 updatesales" data-toggle="modal" data-target="#addpermission">Add Permission</button>
  <a href="{{route('import.permission')}}" class="btn btn-warning">Import</a>
+ <a href="{{route('export')}}" class="btn btn-primary"> Export Excel</a>
 </div>
 
 <div class="panel panel-default">
