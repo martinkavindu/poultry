@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\normalUserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controller\ExpensesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,6 +91,8 @@ Route::post('update/role/permission/{id}',[RoleController::class,'Updateroleperm
 Route::get('delete/permissionrole/{id}',[RoleController::class,'Deletepermissionrole'])->name('delete.permissionrole');
 Route::get('/export/permission',[RoleController::class,'Exportpermission'])->name('export');
 Route::get('/import/permission',[RoleController::class,'Importpermission'])->name('import.permission');
+Route::get('/all/expense',[ExpensesController::class,'AllExpenses'])->name('all.expenses');
+
 
 
 });
